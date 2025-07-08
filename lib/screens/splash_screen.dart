@@ -32,7 +32,7 @@ class SplashScreen extends StatelessWidget {
        
       ],
       onTap: () {
-        print("Tap Event");
+      
       },
     ),
   ),
