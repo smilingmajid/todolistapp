@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:todolistapp/feature/feature_splash/bilding/splash_bindings.dart';
-import 'package:todolistapp/feature/feature_splash/screen/splash_screen.dart';
+
+import '../screens/splash_screen.dart';
+import 'bindings/my_bindings.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
       title: 'todolistapp',
       debugShowCheckedModeBanner: false,
       home: SplashScreen(),
-      initialBinding: SplashBindings(),
+      initialBinding: MyBindings(),
     );
   }
 }
