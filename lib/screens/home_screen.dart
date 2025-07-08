@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:iconsax/iconsax.dart';
-import 'package:random_avatar/random_avatar.dart';
-import 'package:todolistapp/core/app_colors.dart';
-import 'package:todolistapp/controllers/project_controller.dart';
-import 'package:todolistapp/controllers/theme_controller.dart';
-
+import '../core/app_colors.dart';
+import '../controllers/project_controller.dart';
+import '../controllers/theme_controller.dart';
 import '../core/widgets/empty_widget.dart';
 import '../core/widgets/header_widget.dart';
+import '../core/widgets/new_task_bottom_widget.dart';
 import '../core/widgets/project_cart_widget.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -41,6 +39,7 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
       ),
+      floatingActionButton: newTaskBottomWidget(context),
     );
   }
 }
