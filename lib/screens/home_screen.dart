@@ -2,8 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:random_avatar/random_avatar.dart';
-import 'package:todolistapp/constant/app_colors.dart';
+import 'package:todolistapp/core/app_colors.dart';
+import 'package:todolistapp/controllers/project_controller.dart';
 import 'package:todolistapp/controllers/theme_controller.dart';
+
+import '../core/widgets/empty_widget.dart';
+import '../core/widgets/header_widget.dart';
+import '../core/widgets/project_cart_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -11,6 +16,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool isDark = Get.find<ThemeController>().isDark.value;
+    var projectController = Get.find<ProjectController>();
 
     return Scaffold(
       backgroundColor:
@@ -18,23 +24,19 @@ class HomeScreen extends StatelessWidget {
               ? AppColors().darkModeColors[0]
               : AppColors().lightModeColors[0],
       body: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(15.0),
         child: Column(
           children: [
-            Row(
-              children: [
-                Icon(
-                  Iconsax.gallery,
-                  color: isDark ? Colors.white : Colors.black,
-                ),
-                Spacer(),
-                Text(
-                  'Home Screen',
-                  style: TextStyle(color: isDark ? Colors.white : Colors.black),
-                ),
-                Spacer(),
-                RandomAvatar('saytoonz', height: 50, width: 50),
-              ],
+            headerWidget(isDark),
+            SizedBox(height: 50),
+
+            Expanded(
+              child: Obx(
+                () =>
+                    projectController.projects.isEmpty
+                        ? emptyWidget()
+                        : projectCardWidget(projectController),
+              ),
             ),
           ],
         ),
