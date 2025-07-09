@@ -34,7 +34,7 @@ class AddNewProjectScreen extends StatelessWidget {
             Spacer(),
             buildTextField("New Project", '', addProjectController, isDark),
             Spacer(),
-            //mainButton('Create '),
+          
             mainButton("Create", () {
   projectController.addProject(addProjectController.text);
   addProjectController.clear();
