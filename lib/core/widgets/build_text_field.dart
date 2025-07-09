@@ -1,0 +1,42 @@
+import 'package:flutter/material.dart';
+
+Widget buildTextField(
+  String title,
+  String hint,
+  TextEditingController controller,
+  bool isDark,
+) {
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Text(
+        title,
+        style: TextStyle(
+          color: isDark ? Colors.white : Colors.black,
+          fontSize: 13,
+          fontWeight: FontWeight.w500,
+          fontFamily: 'ClashDisplay',
+        ),
+      ),
+      const SizedBox(height: 15),
+      TextField(
+        controller: controller,
+        decoration: InputDecoration(
+          hintText: hint,
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(15),
+            borderSide: BorderSide(
+              color: const Color.fromARGB(255, 255, 255, 255),
+            ),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(15),
+            borderSide: BorderSide(
+              color: const Color.fromARGB(255, 255, 255, 255),
+            ),
+          ),
+        ),
+      ),
+    ],
+  );
+}

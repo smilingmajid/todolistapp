@@ -5,7 +5,10 @@ import 'package:todolistapp/controllers/theme_controller.dart';
 import 'package:todolistapp/core/app_colors.dart';
 import 'package:todolistapp/core/widgets/text_widget.dart';
 
+import '../controllers/project_controller.dart';
+import '../core/widgets/build_text_field.dart';
 import '../core/widgets/close_button_widget.dart';
+import '../core/widgets/main_bottom.dart';
 
 class AddNewProjectScreen extends StatelessWidget {
   const AddNewProjectScreen({super.key});
@@ -14,7 +17,7 @@ class AddNewProjectScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     bool isDark = Get.find<ThemeController>().isDark.value;
     final TextEditingController addProjectController = TextEditingController();
-
+    final projectController = Get.find<ProjectController>();
     return Scaffold(
       backgroundColor:
           isDark
@@ -31,7 +34,14 @@ class AddNewProjectScreen extends StatelessWidget {
             Spacer(),
             buildTextField("New Project", '', addProjectController, isDark),
             Spacer(),
-            mainButton('Create '),
+            //mainButton('Create '),
+            mainButton("Create", () {
+  projectController.addProject(addProjectController.text);
+  addProjectController.clear();
+  
+}, context),
+            const SizedBox(height: 20),
+
           ],
         ),
       ),
@@ -39,67 +49,4 @@ class AddNewProjectScreen extends StatelessWidget {
   }
 }
 
-Widget buildTextField(
-  String title,
-  String hint,
-  TextEditingController controller,
-  bool isDark,
-) {
-  return Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-      Text(
-        title,
-        style: TextStyle(
-          color: isDark ? Colors.white : Colors.black,
-          fontSize: 13,
-          fontWeight: FontWeight.w500,
-          fontFamily: 'ClashDisplay',
-        ),
-      ),
-      const SizedBox(height: 15),
-      TextField(
-        controller: controller,
-        decoration: InputDecoration(
-          hintText: hint,
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(15),
-            borderSide: BorderSide(
-              color: const Color.fromARGB(255, 255, 255, 255),
-            ),
-          ),
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(15),
-            borderSide: BorderSide(
-              color: const Color.fromARGB(255, 255, 255, 255),
-            ),
-          ),
-        ),
-      ),
-    ],
-  );
-}
 
-Widget mainButton(String title) {
-  return SizedBox(
-    width: double.infinity,
-    height: 50,
-    child: ElevatedButton(
-      onPressed: () async {},
-      style: ElevatedButton.styleFrom(
-        backgroundColor: Colors.black,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-      ),
-      child:  Text(
-        //'Task',
-        title,
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 16,
-          fontWeight: FontWeight.w500,
-          fontFamily: 'ClashDisplay',
-        ),
-      ),
-    ),
-  );
-}
