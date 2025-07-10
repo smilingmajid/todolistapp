@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:todolistapp/core/project_colors.dart';
 import '../core/app_colors.dart';
 import '../controllers/project_controller.dart';
 import '../controllers/theme_controller.dart';
@@ -39,7 +40,7 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
       ),
-      floatingActionButton: newTaskBottomWidget(context),
+      floatingActionButton: newTaskBottomWidget(context,ProjectColors.palette[projectController.projects.length],),
     );
   }
 }

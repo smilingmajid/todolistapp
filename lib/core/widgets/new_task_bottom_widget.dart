@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 import '../../screens/add_new_task_screen.dart';
 
-Widget newTaskBottomWidget(BuildContext context) {
+Widget newTaskBottomWidget(BuildContext context, Color projectnColor) {
   return Container(
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(15),
@@ -42,7 +42,7 @@ Widget newTaskBottomWidget(BuildContext context) {
               await Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const AddNewProjectScreen(),
+                  builder: (context) =>  AddNewProjectScreen(projectColor: projectnColor),
                 ),
               );
             },

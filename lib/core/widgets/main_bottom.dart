@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 Widget mainButton(String title, VoidCallback onPressed, BuildContext context) {
@@ -7,7 +6,7 @@ Widget mainButton(String title, VoidCallback onPressed, BuildContext context) {
     height: 50,
     child: ElevatedButton(
       onPressed: () {
-        onPressed(); // اجرای فانکشن اصلی
+        onPressed();
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text('پروژه با موفقیت اضافه شد.'),
@@ -22,7 +21,7 @@ Widget mainButton(String title, VoidCallback onPressed, BuildContext context) {
       },
       style: ElevatedButton.styleFrom(
         backgroundColor: Colors.black,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
       ),
       child: Text(
         title,
@@ -36,4 +35,3 @@ Widget mainButton(String title, VoidCallback onPressed, BuildContext context) {
     ),
   );
 }
-

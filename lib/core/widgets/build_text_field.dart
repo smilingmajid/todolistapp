@@ -24,13 +24,13 @@ Widget buildTextField(
         decoration: InputDecoration(
           hintText: hint,
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(15),
+            borderRadius: BorderRadius.circular(30),
             borderSide: BorderSide(
               color: const Color.fromARGB(255, 255, 255, 255),
             ),
           ),
           enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(15),
+            borderRadius: BorderRadius.circular(30),
             borderSide: BorderSide(
               color: const Color.fromARGB(255, 255, 255, 255),
             ),
