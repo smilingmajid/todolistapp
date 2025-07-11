@@ -1,6 +1,5 @@
 import 'dart:ui';
 
-
 import 'package:flutter/material.dart';
 
 import '../../screens/add_new_task_screen.dart';
@@ -38,11 +37,13 @@ Widget newTaskBottomWidget(BuildContext context, Color projectnColor) {
           child: IconButton(
             icon: const Icon(Icons.add, color: Colors.white),
             onPressed: () async {
-              
+             // print(projectnColor);
               await Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) =>  AddNewProjectScreen(projectColor: projectnColor),
+                  builder:
+                      (context) =>
+                          AddNewProjectScreen(projectColor: projectnColor),
                 ),
               );
             },

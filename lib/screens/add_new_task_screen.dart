@@ -8,7 +8,7 @@ import 'package:todolistapp/core/widgets/text_widget.dart';
 
 import '../controllers/project_controller.dart';
 import '../core/widgets/build_text_field.dart';
-import '../core/widgets/close_button_widget.dart';
+
 import '../core/widgets/main_bottom.dart';
 
 class AddNewProjectScreen extends StatelessWidget {

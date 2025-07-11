@@ -16,7 +16,8 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     bool isDark = Get.find<ThemeController>().isDark.value;
     var projectController = Get.find<ProjectController>();
-
+    //int Index = (projectController.projects.length) + 1;
+    //print(Index);
     return Scaffold(
       backgroundColor:
           isDark
@@ -40,7 +41,11 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
       ),
-      floatingActionButton: newTaskBottomWidget(context,ProjectColors.palette[projectController.projects.length],),
+      floatingActionButton: Obx(() {
+        int index =
+            projectController.projects.length % ProjectColors.palette.length;
+        return newTaskBottomWidget(context, ProjectColors.palette[index]);
+      }),
     );
   }
 }
