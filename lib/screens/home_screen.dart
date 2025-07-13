@@ -16,8 +16,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     bool isDark = Get.find<ThemeController>().isDark.value;
     var projectController = Get.find<ProjectController>();
-    //int Index = (projectController.projects.length) + 1;
-    //print(Index);
+
     return Scaffold(
       backgroundColor:
           isDark

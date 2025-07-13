@@ -21,6 +21,7 @@ class AddNewProjectScreen extends StatelessWidget {
     bool isDark = Get.find<ThemeController>().isDark.value;
     final TextEditingController addProjectController = TextEditingController();
     final projectController = Get.find<ProjectController>();
+
     return Scaffold(
       backgroundColor:
           isDark
@@ -95,31 +96,29 @@ class AddNewProjectScreen extends StatelessWidget {
                       topRight: Radius.circular(30),
                     ),
                   ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      //closeButtonWidget(context, isDark),
-                      /* const SizedBox(height: 30),
-                      textWidget(
-                        isDark: isDark,
-                        txt: 'New Project',
-                        fontSize: 32,
-                      ),*/
-                      Spacer(),
-                      buildTextField(
-                        "New Project",
-                        '',
-                        addProjectController,
-                        isDark,
-                      ),
-                      Spacer(),
+                  child: Padding(
+                    padding: const EdgeInsets.all(15),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Spacer(),
+                        buildTextField(
+                          "New Project",
+                          '',
+                          addProjectController,
+                          isDark,
+                        ),
+                        Spacer(),
 
-                      mainButton("Create", () {
-                        projectController.addProject(addProjectController.text);
-                        addProjectController.clear();
-                      }, context),
-                      const SizedBox(height: 20),
-                    ],
+                        mainButton("Create", () {
+                          projectController.addProject(
+                            addProjectController.text,
+                          );
+                          addProjectController.clear();
+                        }, context),
+                        const SizedBox(height: 20),
+                      ],
+                    ),
                   ),
                 ),
               ),
