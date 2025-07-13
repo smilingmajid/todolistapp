@@ -113,6 +113,7 @@ class AddNewProjectScreen extends StatelessWidget {
                         mainButton("Create", () {
                           projectController.addProject(
                             addProjectController.text,
+                            projectColor!,
                           );
                           addProjectController.clear();
                         }, context),
