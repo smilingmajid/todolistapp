@@ -34,7 +34,7 @@ class HomeScreen extends StatelessWidget {
                 () =>
                     projectController.projects.isEmpty
                         ? emptyWidget()
-                        : projectCardWidget(projectController),
+                        : projectCardWidget(projectController, isDark),
               ),
             ),
           ],

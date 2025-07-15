@@ -1,12 +1,16 @@
-
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:todolistapp/core/widgets/show_dialog_widget.dart';
 
 import '../../controllers/project_controller.dart';
 
-Widget glassyIconBottomWidget(BuildContext context ,ProjectController projectController,int index,) {
- return Positioned(
+Widget glassyIconBottomWidget(
+  BuildContext context,
+  ProjectController projectController,
+  int index,
+  bool isDark,
+) {
+  return Positioned(
     bottom: 20,
     right: 20,
     child: GestureDetector(
@@ -16,7 +20,8 @@ Widget glassyIconBottomWidget(BuildContext context ,ProjectController projectCon
           projectController,
           index,
           'Are you sure you want to delete this project?',
-          'Delete Project',
+          '',
+          isDark,
         );
       },
       child: Container(

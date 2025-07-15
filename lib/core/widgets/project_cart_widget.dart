@@ -3,7 +3,7 @@ import 'package:todolistapp/core/widgets/glassy_icon_bottom_widget.dart';
 import 'package:todolistapp/core/widgets/text_widget.dart';
 import '/core/widgets/glass_circle_widget.dart';
 
-Widget projectCardWidget(projectController) {
+Widget projectCardWidget(projectController,isDark) {
   return GridView.builder(
     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
       crossAxisCount: 1,
@@ -70,7 +70,7 @@ Widget projectCardWidget(projectController) {
                   ),
                 ),
                 // Delete button
-                glassyIconBottomWidget(context, projectController, index),
+                glassyIconBottomWidget(context, projectController, index,isDark),
               ],
             ),
           ),
