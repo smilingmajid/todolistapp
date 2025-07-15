@@ -1,6 +1,5 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:todolistapp/core/app_colors.dart';
 import 'package:todolistapp/core/widgets/text_widget.dart';
 import '../../controllers/project_controller.dart';
 
@@ -14,9 +13,10 @@ Future showDialogWidget(
 ) {
   return showDialog(
     context: context,
-    barrierColor: Colors.black.withOpacity(0.4), // تار کردن پس‌زمینه
+    // ignore: deprecated_member_use
+    barrierColor: Colors.black.withOpacity(0.4), 
     builder: (context) => Dialog(
-      backgroundColor: Colors.transparent, // پس‌زمینه دیالوگ شفاف
+      backgroundColor: Colors.transparent, 
       insetPadding: EdgeInsets.all(20),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(20),
@@ -25,9 +25,11 @@ Future showDialogWidget(
           child: Container(
             padding: EdgeInsets.all(20),
             decoration: BoxDecoration(
-              color: Colors.black.withOpacity(0.5), // شیشه‌ای با ته‌رنگ سیاه
+              // ignore: deprecated_member_use
+              color: Colors.black.withOpacity(0.5), 
               borderRadius: BorderRadius.circular(20),
               border: Border.all(
+                // ignore: deprecated_member_use
                 color: Colors.white.withOpacity(0.1),
               ),
             ),

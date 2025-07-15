@@ -1,19 +1,34 @@
 class TaskModel {
   final String title;
+  final String? description;
   final bool isDone;
-
+  final DateTime createdAt;
+  final DateTime deadline; 
   TaskModel({
     required this.title,
+    required this.deadline,
+    this.description,
     this.isDone = false,
-  });
+    DateTime? createdAt,
+  }) : createdAt = createdAt ?? DateTime.now();
 
-  Map<String, dynamic> toMap() => {
-    'title': title,
-    'isDone': isDone,
-  };
+  Map<String, dynamic> toMap() {
+    return {
+      'title': title,
+      'description': description,
+      'isDone': isDone,
+      'createdAt': createdAt.toIso8601String(),
+      'deadline': deadline.toIso8601String(),
+    };
+  }
 
-  factory TaskModel.fromMap(Map<String, dynamic> map) => TaskModel(
-    title: map['title'],
-    isDone: map['isDone'] ?? false,
-  );
+  factory TaskModel.fromMap(Map<String, dynamic> map) {
+    return TaskModel(
+      title: map['title'],
+      description: map['description'],
+      isDone: map['isDone'] ?? false,
+      createdAt: DateTime.parse(map['createdAt']),
+      deadline: DateTime.parse(map['deadline']), 
+    );
+  }
 }
