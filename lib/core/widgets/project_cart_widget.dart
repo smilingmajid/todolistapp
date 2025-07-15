@@ -3,8 +3,8 @@ import 'package:todolistapp/core/widgets/glassy_icon_bottom_widget.dart';
 import 'package:todolistapp/core/widgets/text_widget.dart';
 import '/core/widgets/glass_circle_widget.dart';
 
-Widget projectCardWidget( projectController) {
-   return GridView.builder(
+Widget projectCardWidget(projectController) {
+  return GridView.builder(
     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
       crossAxisCount: 1,
       childAspectRatio: 2,
@@ -12,28 +12,25 @@ Widget projectCardWidget( projectController) {
     ),
     itemCount: projectController.projects.length,
     itemBuilder: (context, index) {
-  
-
       return GestureDetector(
-        onTap: () {
-          
-        
-        },
+        onTap: () {},
         child: ClipRRect(
           borderRadius: BorderRadius.circular(25),
           child: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(25),
-             gradient: LinearGradient(
+              gradient: LinearGradient(
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
-                colors: [Colors.blueAccent, Colors.blueAccent.withBlue(200)],
+                colors: [
+                  projectController.projectColors[index],
+                  projectController.projectColors[index].withBlue(200),
+                ],
               ),
             ),
             child: Stack(
               children: [
                 // Large circle with blur effect in background
-
                 Positioned(
                   top: -50,
                   right: -50,
@@ -53,7 +50,7 @@ Widget projectCardWidget( projectController) {
                         weight: 'title',
                       ),
 
-                     /* Column(
+                      /* Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           textWidget(

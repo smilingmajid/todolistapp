@@ -3,7 +3,8 @@ import 'package:get/get.dart';
 
 class ProjectController extends GetxController {
   RxList<String> projects = <String>["Ali"].obs;
-  RxList projectColors = [Colors.blue].obs;
+RxList<Color> projectColors = <Color>[Colors.blue].obs;
+
 
   void addProject(String name, Color projectColor) {
     if (name.trim().isNotEmpty) {

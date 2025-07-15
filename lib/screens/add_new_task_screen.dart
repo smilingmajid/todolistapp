@@ -110,13 +110,19 @@ class AddNewProjectScreen extends StatelessWidget {
                         ),
                         Spacer(),
 
-                        mainButton("Create", () {
-                          projectController.addProject(
-                            addProjectController.text,
-                            projectColor!,
-                          );
-                          addProjectController.clear();
-                        }, context),
+                        mainButton(
+                          "Create",
+                          () {
+                           // print( addProjectController.text,);
+                            projectController.addProject(
+                              addProjectController.text,
+                              projectColor!,
+                            );
+                            addProjectController.clear();
+                          },
+                          context,
+                          isDark,
+                        ),
                         const SizedBox(height: 20),
                       ],
                     ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:todolistapp/core/widgets/text_widget.dart';
 
-Widget mainButton(String title, VoidCallback onPressed, BuildContext context) {
+Widget mainButton(String title, VoidCallback onPressed, BuildContext context , bool isDark) {
   return SizedBox(
     width: double.infinity,
     height: 50,
@@ -9,7 +10,7 @@ Widget mainButton(String title, VoidCallback onPressed, BuildContext context) {
         onPressed();
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('پروژه با موفقیت اضافه شد.'),
+            content:textWidget(isDark: isDark, txt: "The project was successfully created."),
             backgroundColor: Colors.green,
             duration: Duration(seconds: 2),
             behavior: SnackBarBehavior.floating,
