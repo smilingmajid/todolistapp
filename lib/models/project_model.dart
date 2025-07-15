@@ -1,5 +1,4 @@
 import 'dart:ui';
-
 import 'task_model.dart';
 
 class ProjectModel {
