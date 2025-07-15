@@ -12,4 +12,14 @@ RxList<Color> projectColors = <Color>[Colors.blue].obs;
       projectColors.add(projectColor);
     }
   }
+
+  void deleteProject(int index) {
+  if (index >= 0 && index < projects.length) {
+    projects.removeAt(index);
+    projectColors.removeAt(index);
+  }
+}
+
+
+
 }
