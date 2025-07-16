@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:iconsax/iconsax.dart';
+
 import 'package:todolistapp/controllers/task_controller.dart';
+import 'package:todolistapp/core/widgets/select_date_widget.dart';
 import 'package:todolistapp/models/task_model.dart';
+import '../controllers/date_controller.dart';
 import '../controllers/theme_controller.dart';
 import '../core/app_colors.dart';
+import '../core/widgets/empty_widget.dart';
 import '../core/widgets/glass_circle_widget.dart';
+import '../core/widgets/task_status_widget.dart';
 import '../core/widgets/text_widget.dart';
 import '../models/project_model.dart';
 
@@ -19,6 +23,9 @@ class TaskScreen extends StatelessWidget {
     bool isDark = Get.find<ThemeController>().isDark.value;
     TextEditingController addTaskController = TextEditingController();
     var taskController = Get.find<TaskController>();
+    var dateController = Get.find<DateController>();
+        final activeTasks = taskController.tasks.where((task) => !task.isDone).toList();
+    final completedTasks = taskController.tasks.where((task) => task.isDone).toList();
     return Scaffold(
       backgroundColor:
           isDark
@@ -121,15 +128,22 @@ class TaskScreen extends StatelessWidget {
                             ),
                           ),
                         ),
+
+                        selectDateWidget(context, dateController),
                         IconButton(
                           onPressed: () {
-                            taskController.addTask(TaskModel(title: addTaskController.text, deadline: deadline))
+                            taskController.addTask(
+                              TaskModel(
+                                title: addTaskController.text,
+                                deadline: dateController.selectedDate,
+                              ),
+                            );
+                            /*
+                            print(addTaskController.text);
+                            print(dateController.selectedDate);
+                            */
                           },
                           icon: Icon(Icons.add, color: Colors.white),
-                        ),
-                        IconButton(
-                          onPressed: () {},
-                          icon: Icon(Iconsax.calendar, color: Colors.white),
                         ),
                       ],
                     ),
@@ -150,6 +164,69 @@ class TaskScreen extends StatelessWidget {
                       topRight: Radius.circular(30),
                     ),
                   ),
+                  child: ListView(
+                        padding: const EdgeInsets.all(20),
+                        children: [
+                          // Active tasks
+                          taskStatusWidget(
+                            Colors.orange,
+                            const Color.fromARGB(255, 253, 239, 218),
+
+                            activeTasks.length,
+                            'In Progress Task',
+                          ),
+                          const SizedBox(height: 20),
+                          ...activeTasks.map(
+                            (task) => buildTaskItemWidget(task, taskController),
+                          ),
+
+                          // Divider
+                          if (completedTasks.isNotEmpty) ...[
+                            const SizedBox(height: 30),
+                            Container(
+                              height: 2,
+                              color: Colors.grey[100],
+                              margin: const EdgeInsets.symmetric(
+                                horizontal: 20,
+                              ),
+                            ),
+                            const SizedBox(height: 30),
+
+                            // Completed tasks
+                            taskStatusWidget(
+                              Colors.green,
+                              const Color.fromARGB(255, 232, 245, 233),
+
+                              completedTasks.length,
+                              'Completed Task',
+                            ),
+
+                            const SizedBox(height: 20),
+
+                            ...completedTasks.map(
+                              (task) => buildTaskItemWidget(
+                                task,
+                                taskController,
+                              ), //_buildTaskItem(task),
+                            ),
+                          ],
+                        ],
+                      ),
+                  /*Column(
+                    children: [
+                      Expanded(
+                        child: Obx(
+                          () =>
+                              taskController.tasks.isEmpty
+                                  ? emptyWidget()
+                                  : Text(
+                                    taskController.tasks[0].title,
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                        ),
+                      ),
+                    ],
+                  ),*/
                 ),
               ),
             ],
