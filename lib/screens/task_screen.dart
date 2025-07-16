@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:iconsax/iconsax.dart';
+import 'package:todolistapp/controllers/task_controller.dart';
 import '../controllers/theme_controller.dart';
 import '../core/app_colors.dart';
 import '../core/widgets/glass_circle_widget.dart';
@@ -14,7 +16,8 @@ class TaskScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool isDark = Get.find<ThemeController>().isDark.value;
-
+    TextEditingController addTaskController = TextEditingController();
+    var taskController = Get.find<TaskController>();
     return Scaffold(
       backgroundColor:
           isDark
@@ -76,10 +79,65 @@ class TaskScreen extends StatelessWidget {
                   ],
                 ),
               ),
+              Positioned(
+                top: 120,
+                left: 30,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Container(
+                          width: 3,
+                          height: 20,
+                          color: Colors.white,
+                          margin: const EdgeInsets.only(right: 10),
+                        ),
+                        textWidget(
+                          isDark: false,
+                          txt: ' Tasks',
+                          isBottom: true,
+                          fontSize: 16,
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 20),
+                    Row(
+                      children: [
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width - 120,
+                          child: TextField(
+                            controller: addTaskController,
+                            style: const TextStyle(color: Colors.white),
+                            decoration: InputDecoration(
+                              hintText: 'Add new task...',
+                              hintStyle: TextStyle(
+                                // ignore: deprecated_member_use
+                                color: Colors.white.withOpacity(0.7),
+                                fontFamily: 'ClashDisplay',
+                              ),
+                              border: InputBorder.none,
+                            ),
+                          ),
+                        ),
+                        IconButton(
+                          onPressed: () {
+                            //taskController.addTask()
+                          },
+                          icon: Icon(Icons.add, color: Colors.white),
+                        ),
+                        IconButton(
+                          onPressed: () {},
+                          icon: Icon(Iconsax.calendar, color: Colors.white),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
 
-  
               Padding(
-                padding: const EdgeInsets.only(top: 200),
+                padding: const EdgeInsets.only(top: 250),
                 child: Container(
                   decoration: BoxDecoration(
                     color:
