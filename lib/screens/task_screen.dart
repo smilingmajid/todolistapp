@@ -7,7 +7,7 @@ import 'package:todolistapp/models/task_model.dart';
 import '../controllers/date_controller.dart';
 import '../controllers/theme_controller.dart';
 import '../core/app_colors.dart';
-import '../core/widgets/empty_widget.dart';
+import '../core/build_task_item_widget.dart';
 import '../core/widgets/glass_circle_widget.dart';
 import '../core/widgets/task_status_widget.dart';
 import '../core/widgets/text_widget.dart';
