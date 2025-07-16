@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:todolistapp/controllers/task_controller.dart';
+import 'package:todolistapp/models/task_model.dart';
 import '../controllers/theme_controller.dart';
 import '../core/app_colors.dart';
 import '../core/widgets/glass_circle_widget.dart';
@@ -122,7 +123,7 @@ class TaskScreen extends StatelessWidget {
                         ),
                         IconButton(
                           onPressed: () {
-                            //taskController.addTask()
+                            taskController.addTask(TaskModel(title: addTaskController.text, deadline: deadline))
                           },
                           icon: Icon(Icons.add, color: Colors.white),
                         ),
