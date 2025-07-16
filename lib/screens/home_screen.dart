@@ -32,7 +32,7 @@ class HomeScreen extends StatelessWidget {
             Expanded(
               child: Obx(
                 () =>
-                    projectController.projects.isEmpty
+                    projectController. projectList.isEmpty
                         ? emptyWidget()
                         : projectCardWidget(projectController, isDark),
               ),
@@ -42,7 +42,7 @@ class HomeScreen extends StatelessWidget {
       ),
       floatingActionButton: Obx(() {
         int index =
-            projectController.projects.length % ProjectColors.palette.length;
+            projectController. projectList.length % ProjectColors.palette.length;
         return newTaskBottomWidget(context, ProjectColors.palette[index]);
       }),
     );

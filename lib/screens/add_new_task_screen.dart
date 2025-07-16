@@ -38,6 +38,7 @@ class AddNewProjectScreen extends StatelessWidget {
         child: SafeArea(
           child: Stack(
             children: [
+              
               Positioned(
                 top: -50,
                 right: -50,
@@ -116,7 +117,8 @@ class AddNewProjectScreen extends StatelessWidget {
                            // print( addProjectController.text,);
                             projectController.addProject(
                               addProjectController.text,
-                              projectColor!,
+                              // ignore: deprecated_member_use
+                              projectColor!.value,
                             );
                             addProjectController.clear();
                           },
@@ -129,6 +131,8 @@ class AddNewProjectScreen extends StatelessWidget {
                   ),
                 ),
               ),
+            
+            
             ],
           ),
         ),

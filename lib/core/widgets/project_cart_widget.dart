@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:todolistapp/core/widgets/glassy_icon_bottom_widget.dart';
 import 'package:todolistapp/core/widgets/text_widget.dart';
 import 'package:todolistapp/screens/task_screen.dart';
+import '../../models/project_model.dart';
 import '/core/widgets/glass_circle_widget.dart';
 
 Widget projectCardWidget(projectController, isDark) {
@@ -11,17 +12,18 @@ Widget projectCardWidget(projectController, isDark) {
       childAspectRatio: 2,
       mainAxisSpacing: 15,
     ),
-    itemCount: projectController.projects.length,
+    itemCount: projectController.projectList.length,
     itemBuilder: (context, index) {
-      final project = projectController.projects[index];
+      final project = projectController.projectList[index];
 
       return GestureDetector(
         onTap: () async {
+         // print("object");
+          ProjectModel selectedProject = projectController.projectList[index];
           await Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => TaskScreen(//project: project
-              ),
+              builder: (context) => TaskScreen(project: selectedProject),
             ),
           );
         },
@@ -33,10 +35,7 @@ Widget projectCardWidget(projectController, isDark) {
               gradient: LinearGradient(
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
-                colors: [
-                  project.color,
-                  project.color.withBlue(200),
-                ],
+                colors: [project.color, project.color.withBlue(200)],
               ),
             ),
             child: Stack(
