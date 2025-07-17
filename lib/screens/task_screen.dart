@@ -26,9 +26,7 @@ class TaskScreen extends StatelessWidget {
 
     return Scaffold(
       backgroundColor:
-          isDark
-              ? AppColors().darkModeColors[0]
-              : AppColors().lightModeColors[0],
+          isDark ? AppColors().darkModeColors[0] : AppColors().lightModeColors[0],
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
@@ -45,7 +43,6 @@ class TaskScreen extends StatelessWidget {
                 right: -50,
                 child: glassCircleWidget(200, 200, 0.15, const SizedBox()),
               ),
-              // Header row with back button and title
               Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: Row(
@@ -60,11 +57,7 @@ class TaskScreen extends StatelessWidget {
                           45,
                           0.4,
                           IconButton(
-                            icon: const Icon(
-                              Icons.arrow_back,
-                              color: Colors.white,
-                              size: 24,
-                            ),
+                            icon: const Icon(Icons.arrow_back, color: Colors.white, size: 24),
                             onPressed: () => Navigator.pop(context),
                           ),
                         ),
@@ -81,8 +74,6 @@ class TaskScreen extends StatelessWidget {
                   ],
                 ),
               ),
-
-              // Input row for adding new task
               Positioned(
                 top: 120,
                 left: 20,
@@ -104,7 +95,6 @@ class TaskScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    // Assuming you have a widget selectDateWidget for picking date
                     selectDateWidget(context, dateController),
                     IconButton(
                       icon: const Icon(Icons.add, color: Colors.white),
@@ -131,37 +121,26 @@ class TaskScreen extends StatelessWidget {
                   ],
                 ),
               ),
-
-              // Tasks list container
               Padding(
                 padding: const EdgeInsets.only(top: 200),
                 child: Container(
                   decoration: BoxDecoration(
-                    color:
-                        isDark
-                            ? AppColors().darkModeColors[0]
-                            : AppColors().lightModeColors[0],
+                    color: isDark
+                        ? AppColors().darkModeColors[0]
+                        : AppColors().lightModeColors[0],
                     borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(30),
                       topRight: Radius.circular(30),
                     ),
                   ),
                   child: Obx(() {
-                    final activeTasks =
-                        taskController
-                            .getTasksByProject(project.id)
-                            .where((task) => !task.isDone)
-                            .toList();
-                    final completedTasks =
-                        taskController
-                            .getTasksByProject(project.id)
-                            .where((task) => task.isDone)
-                            .toList();
+                    final allTasks = taskController.getTasksByProject(project.id);
+                    final activeTasks = allTasks.where((task) => !task.isDone).toList();
+                    final completedTasks = allTasks.where((task) => task.isDone).toList();
 
                     return ListView(
                       padding: const EdgeInsets.all(20),
                       children: [
-                        // Active tasks section
                         taskStatusWidget(
                           Colors.orange,
                           const Color.fromARGB(255, 253, 239, 218),
@@ -169,27 +148,20 @@ class TaskScreen extends StatelessWidget {
                           'In Progress Tasks',
                         ),
                         const SizedBox(height: 20),
-                        ...activeTasks.asMap().entries.map(
-                          (entry) => buildTaskItemWidget(
-                            entry.value,
-                            taskController,
-                            isDark,
-                            entry.key,
-                          ),
-                        ),
-
+                        ...activeTasks.map((task) {
+                          final realIndex = taskController.tasks.indexOf(task);
+                          return buildTaskItemWidget(task, taskController, isDark, realIndex);
+                        }),
                         if (completedTasks.isNotEmpty) ...[
                           const SizedBox(height: 30),
                           Container(
                             height: 2,
-                            color:
-                                isDark
-                                    ? AppColors().darkModeColors[1]
-                                    : AppColors().lightModeColors[1],
+                            color: isDark
+                                ? AppColors().darkModeColors[1]
+                                : AppColors().lightModeColors[1],
                             margin: const EdgeInsets.symmetric(horizontal: 20),
                           ),
                           const SizedBox(height: 30),
-                          // Completed tasks section
                           taskStatusWidget(
                             Colors.green,
                             const Color.fromARGB(255, 232, 245, 233),
@@ -197,14 +169,10 @@ class TaskScreen extends StatelessWidget {
                             'Completed Tasks',
                           ),
                           const SizedBox(height: 20),
-                          ...completedTasks.asMap().entries.map(
-                            (entry) => buildTaskItemWidget(
-                              entry.value,
-                              taskController,
-                              isDark,
-                              entry.key,
-                            ),
-                          ),
+                          ...completedTasks.map((task) {
+                            final realIndex = taskController.tasks.indexOf(task);
+                            return buildTaskItemWidget(task, taskController, isDark, realIndex);
+                          }),
                         ],
                       ],
                     );

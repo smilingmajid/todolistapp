@@ -5,7 +5,7 @@ import 'package:random_avatar/random_avatar.dart';
 Widget headerWidget(bool isDark) {
   return Row(
     children: [
-      Icon(Iconsax.gallery, color: isDark ? Colors.white : Colors.black),
+      Icon(Iconsax.menu_1, color: isDark ? Colors.white : Colors.black),
       Spacer(),
       Text(
         'Home Screen',
