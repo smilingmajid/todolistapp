@@ -4,19 +4,15 @@ import '../models/task_model.dart';
 class TaskController extends GetxController {
   RxList<TaskModel> tasks = <TaskModel>[].obs;
 
-
   void addTask(TaskModel task) {
     tasks.add(task);
   }
-
-
 
   void deleteTask(int index) {
     if (index >= 0 && index < tasks.length) {
       tasks.removeAt(index);
     }
   }
-
 
   void toggleDone(int index) {
     if (index >= 0 && index < tasks.length) {
@@ -27,10 +23,10 @@ class TaskController extends GetxController {
         deadline: task.deadline,
         isDone: !task.isDone,
         createdAt: task.createdAt,
+        projectId: task.projectId,
       );
     }
   }
-
 
   void updateTask(int index, TaskModel updatedTask) {
     if (index >= 0 && index < tasks.length) {
@@ -38,8 +34,11 @@ class TaskController extends GetxController {
     }
   }
 
- 
   void clearAll() {
     tasks.clear();
+  }
+
+  List<TaskModel> getTasksByProject(String projectId) {
+    return tasks.where((task) => task.projectId == projectId).toList();
   }
 }
