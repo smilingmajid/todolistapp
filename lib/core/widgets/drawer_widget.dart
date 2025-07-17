@@ -2,13 +2,31 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:line_icons/line_icons.dart';
+import 'package:todolistapp/core/app_colors.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 Widget drawerWidget(bool isDark, {Function()? onPressed}) {
   final List<Map<String, dynamic>> drawerItems = [
-    {'icon': LineIcons.github, 'title': 'Github'},
-    {'icon': LineIcons.linkedinIn, 'title': 'Linkedin'},
-    {'icon': LineIcons.telegram, 'title': 'Telegram'},
-    {'icon': Iconsax.instagram, 'title': 'Instagram'},
+    {
+      'icon': LineIcons.github,
+      'title': 'Github',
+      'url': 'https://github.com/smilingmajid',
+    },
+    {
+      'icon': LineIcons.linkedinIn,
+      'title': 'Linkedin',
+      'url': 'https://www.linkedin.com/in/smiling-majid/',
+    },
+    {
+      'icon': LineIcons.telegram,
+      'title': 'Telegram',
+      'url': 'https://t.me/smiling_majid',
+    },
+    {
+      'icon': Iconsax.instagram,
+      'title': 'Instagram',
+      'url': 'https://www.instagram.com/smilingmajid/',
+    },
   ];
 
   return Container(
@@ -18,8 +36,10 @@ Widget drawerWidget(bool isDark, {Function()? onPressed}) {
         begin: Alignment.topLeft,
         end: Alignment.bottomRight,
         colors: [
-          Colors.grey[900]!,
-          const Color.fromARGB(255, 61, 61, 61),
+          isDark ? Colors.black : Colors.white,
+          isDark
+              ? AppColors().darkModeColors[0]
+              : AppColors().lightModeColors[0],
         ],
       ),
     ),
@@ -34,7 +54,7 @@ Widget drawerWidget(bool isDark, {Function()? onPressed}) {
               onPressed: onPressed,
               icon: Icon(
                 isDark ? Iconsax.sun_1 : Iconsax.moon,
-                color: Colors.white,
+                color: isDark ? Colors.white : Colors.black,
               ),
             ),
           ),
@@ -42,48 +62,57 @@ Widget drawerWidget(bool isDark, {Function()? onPressed}) {
             child: Image.asset('assets/image/me.png', width: 75, height: 75),
           ),
           const SizedBox(height: 5),
-          const Center(
+          Center(
             child: Text(
               'Majid Ghasemy',
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.w600,
                 fontFamily: 'ClashDisplay',
-                color: Colors.white,
+                color: isDark ? Colors.white : Colors.black,
               ),
             ),
           ),
           const SizedBox(height: 10),
-          const Center(
+          Center(
             child: Text(
               'Mid Level Flutter Developer',
               style: TextStyle(
                 fontSize: 12,
                 fontWeight: FontWeight.w400,
                 fontFamily: 'ClashDisplay',
-                color: Colors.white,
+                color: isDark ? Colors.white : Colors.black,
               ),
             ),
           ),
           const SizedBox(height: 30),
-
-          // ListView for menu items
           Expanded(
             child: ListView.builder(
               itemCount: drawerItems.length,
               itemBuilder: (context, index) {
                 final item = drawerItems[index];
                 return ListTile(
-                  leading: Icon(item['icon'], color: Colors.white),
+                  leading: Icon(
+                    item['icon'],
+                    color: isDark ? Colors.white : Colors.black,
+                  ),
                   title: Text(
                     item['title'],
-                    style: const TextStyle(
-                      color: Colors.white,
+                    style: TextStyle(
+                      color: isDark ? Colors.white : Colors.black,
                       fontFamily: 'ClashDisplay',
                     ),
                   ),
-                  onTap: () {
-                    // Handle tap for each item here
+                  onTap: () async {
+                    final url = Uri.parse(item['url']);
+                    if (await canLaunchUrl(url)) {
+                      await launchUrl(
+                        url,
+                        mode: LaunchMode.externalApplication,
+                      );
+                    } else {
+                      throw 'Could not launch ${item['url']}';
+                    }
                   },
                 );
               },

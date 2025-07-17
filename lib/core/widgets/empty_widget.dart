@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-
 Widget emptyWidget() {
   return const Center(
     child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         
         Text(

@@ -23,7 +23,10 @@ class HomeScreen extends StatelessWidget {
     final drawerController = Get.find<ADrawerController>();
 
     return AdvancedDrawer(
-      backdropColor: Colors.grey[900],
+      backdropColor:
+          isDark
+              ? AppColors().darkModeColors[0]
+              : AppColors().lightModeColors[0],
       controller: drawerController.advancedDrawerController,
       animationCurve: Curves.easeInOut,
       animationDuration: const Duration(milliseconds: 300),
@@ -33,7 +36,7 @@ class HomeScreen extends StatelessWidget {
       childDecoration: BoxDecoration(
         boxShadow: [
           BoxShadow(
-            color: Colors.grey[900]!,
+            color: isDark? Colors.white30:Colors.black45,
             blurRadius: 20.0,
             spreadRadius: 5.0,
             offset: const Offset(-20.0, 0.0),
