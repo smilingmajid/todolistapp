@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'package:get/get.dart';
 import 'package:todolistapp/core/project_colors.dart';
+import '../controllers/adrawer_controller.dart';
 import '../core/app_colors.dart';
 import '../controllers/project_controller.dart';
 import '../controllers/theme_controller.dart';
@@ -17,12 +18,13 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool isDark = Get.find<ThemeController>().isDark.value;
+    var themeController = Get.find<ThemeController>();
     var projectController = Get.find<ProjectController>();
-    final advancedDrawerController = AdvancedDrawerController();
+    final drawerController = Get.find<ADrawerController>();
 
     return AdvancedDrawer(
       backdropColor: Colors.grey[900],
-      controller: advancedDrawerController,
+      controller: drawerController.advancedDrawerController,
       animationCurve: Curves.easeInOut,
       animationDuration: const Duration(milliseconds: 300),
       animateChildDecoration: true,
@@ -39,7 +41,12 @@ class HomeScreen extends StatelessWidget {
         ],
         borderRadius: BorderRadius.circular(30),
       ),
-      drawer: drawerWidget(),
+      drawer: drawerWidget(
+        isDark,
+        onPressed: () {
+          themeController.toggleTheme();
+        },
+      ),
       child: Scaffold(
         backgroundColor:
             isDark
@@ -49,13 +56,18 @@ class HomeScreen extends StatelessWidget {
           padding: const EdgeInsets.all(15.0),
           child: Column(
             children: [
-              headerWidget(isDark),
+              headerWidget(
+                isDark,
+                onPressed: () {
+                  drawerController.advancedDrawerController.showDrawer();
+                },
+              ),
               SizedBox(height: 50),
-      
+
               Expanded(
                 child: Obx(
                   () =>
-                      projectController. projectList.isEmpty
+                      projectController.projectList.isEmpty
                           ? emptyWidget()
                           : projectCardWidget(projectController, isDark),
                 ),
@@ -65,7 +77,8 @@ class HomeScreen extends StatelessWidget {
         ),
         floatingActionButton: Obx(() {
           int index =
-              projectController. projectList.length % ProjectColors.palette.length;
+              projectController.projectList.length %
+              ProjectColors.palette.length;
           return newTaskBottomWidget(context, ProjectColors.palette[index]);
         }),
       ),

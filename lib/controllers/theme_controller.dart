@@ -7,4 +7,5 @@ class ThemeController extends GetxController {
     isDark.value = !isDark.value;
     update();
   }
+  
 }
