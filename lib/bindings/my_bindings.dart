@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:todolistapp/controllers/project_controller.dart';
 import '../controllers/date_controller.dart';
+import '../controllers/drawer_controller.dart';
 import '../controllers/splash_controller.dart';
 import '../controllers/task_controller.dart';
 import '../controllers/theme_controller.dart';
@@ -13,6 +14,7 @@ class MyBindings implements Bindings {
     Get.put(SplashController(),);
     Get.put(TaskController(),);
      Get.put(DateController(),);
+     Get.put(DrawerController(),);
     /*
     Get.lazyPut(() => ProjectController(), fenix: true);
     Get.lazyPut(() => SplashController(), fenix: true);
