@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import 'package:todolistapp/controllers/task_controller.dart';
-
 import '../controllers/date_controller.dart';
+import '../controllers/task_controller.dart';
 import '../controllers/theme_controller.dart';
 import '../core/app_colors.dart';
 import '../core/widgets/build_task_item_widget.dart';
@@ -124,6 +122,7 @@ class TaskScreen extends StatelessWidget {
                           TaskModel(
                             title: addTaskController.text.trim(),
                             deadline: dateController.selectedDate,
+                            projectId: project.id,
                           ),
                         );
                         addTaskController.clear();
@@ -149,11 +148,13 @@ class TaskScreen extends StatelessWidget {
                   ),
                   child: Obx(() {
                     final activeTasks =
-                        taskController.tasks
+                        taskController
+                            .getTasksByProject(project.id)
                             .where((task) => !task.isDone)
                             .toList();
                     final completedTasks =
-                        taskController.tasks
+                        taskController
+                            .getTasksByProject(project.id)
                             .where((task) => task.isDone)
                             .toList();
 
