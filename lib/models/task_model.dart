@@ -3,10 +3,13 @@ class TaskModel {
   final String? description;
   final bool isDone;
   final DateTime createdAt;
-  final DateTime deadline; 
+  final DateTime deadline;
+  final String projectId; 
+
   TaskModel({
     required this.title,
     required this.deadline,
+    required this.projectId,
     this.description,
     this.isDone = false,
     DateTime? createdAt,
@@ -19,6 +22,7 @@ class TaskModel {
       'isDone': isDone,
       'createdAt': createdAt.toIso8601String(),
       'deadline': deadline.toIso8601String(),
+      'projectId': projectId,
     };
   }
 
@@ -28,7 +32,8 @@ class TaskModel {
       description: map['description'],
       isDone: map['isDone'] ?? false,
       createdAt: DateTime.parse(map['createdAt']),
-      deadline: DateTime.parse(map['deadline']), 
+      deadline: DateTime.parse(map['deadline']),
+      projectId: map['projectId'],
     );
   }
 }

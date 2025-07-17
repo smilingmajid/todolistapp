@@ -1,17 +1,25 @@
-
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:intl/intl.dart';
+import 'package:todolistapp/core/app_colors.dart';
 
-import '../controllers/task_controller.dart';
-import '../models/task_model.dart';
+import '../../controllers/task_controller.dart';
+import '../../models/task_model.dart';
 
-Widget buildTaskItemWidget(TaskModel task, TaskController taskController) {
+Widget buildTaskItemWidget(
+  TaskModel task,
+  TaskController taskController,
+  bool isDark,
+  int index,
+) {
   return Container(
     margin: const EdgeInsets.only(bottom: 15),
     padding: const EdgeInsets.all(15),
     decoration: BoxDecoration(
-      color: Colors.white,
+      color:
+          isDark
+              ? AppColors().darkModeColors[0]
+              : AppColors().lightModeColors[0],
       borderRadius: BorderRadius.circular(15),
       // border: Border.all(color: Colors.grey[200]!),
     ),
@@ -20,7 +28,7 @@ Widget buildTaskItemWidget(TaskModel task, TaskController taskController) {
         // Checkbox
         GestureDetector(
           onTap: () async {
-
+            taskController.toggleDone(index);
           },
           child: Container(
             width: 30,
@@ -31,7 +39,7 @@ Widget buildTaskItemWidget(TaskModel task, TaskController taskController) {
                 color: task.isDone ? Colors.green : Colors.grey[400]!,
                 width: 1,
               ),
-              color: task.isDone? Colors.green : Colors.transparent,
+              color: task.isDone ? Colors.green : Colors.transparent,
             ),
             child:
                 task.isDone
@@ -49,9 +57,13 @@ Widget buildTaskItemWidget(TaskModel task, TaskController taskController) {
                 task.title,
                 style: TextStyle(
                   fontSize: 16,
-                  color: task.isDone ? Colors.grey : Colors.black87,
-                  decoration:
-                      task.isDone ? TextDecoration.lineThrough : null,
+                  color:
+                      task.isDone
+                          ? Colors.grey[400]
+                          : isDark
+                          ? Colors.white
+                          : Colors.black87,
+                  decoration: task.isDone ? TextDecoration.lineThrough : null,
                 ),
               ),
               Text(
@@ -61,20 +73,12 @@ Widget buildTaskItemWidget(TaskModel task, TaskController taskController) {
             ],
           ),
         ),
+
         // Delete button
-         IconButton(
-          icon: const Icon(Iconsax.edit, color: Colors.black54),
-          onPressed: () async {
-            //await taskController.deleteTask(task);
-            //setState(() {});
-          },
-        ),
-      
         IconButton(
           icon: const Icon(Iconsax.trash, color: Colors.red),
           onPressed: () async {
-           // await taskController.deleteTask(task);
-            //setState(() {});
+            taskController.deleteTask(index);
           },
         ),
       ],

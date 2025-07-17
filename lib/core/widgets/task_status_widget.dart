@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 
-
-Widget taskStatusWidget(Color statusColor,Color bgColor ,int length,String title) {
+Widget taskStatusWidget(
+  Color statusColor,
+  Color bgColor,
+  int length,
+  String title,
+) {
   return Row(
     children: [
       Container(
         width: 30,
         height: 30,
         decoration: BoxDecoration(
-          color:bgColor, //Colors.orange[50],
+          color: bgColor, //Colors.orange[50],
           shape: BoxShape.circle,
         ),
         child: Center(
@@ -27,9 +31,10 @@ Widget taskStatusWidget(Color statusColor,Color bgColor ,int length,String title
       SizedBox(width: 20),
       Text(
         title,
-        //'In Progress',
+
         style: TextStyle(
-          color: Colors.grey[800],
+          color: Colors.grey[600],
+          fontFamily: "ClashDisplay",
           fontSize: 16,
           fontWeight: FontWeight.w600,
           letterSpacing: 1.2,
