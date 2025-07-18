@@ -25,15 +25,11 @@ Widget buildTextField(
           hintText: hint,
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(30),
-            borderSide: BorderSide(
-              color: const Color.fromARGB(255, 255, 255, 255),
-            ),
+            borderSide: BorderSide(color: isDark ? Colors.white : Colors.black),
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(30),
-            borderSide: BorderSide(
-              color: const Color.fromARGB(255, 255, 255, 255),
-            ),
+            borderSide: BorderSide(color: isDark ? Colors.white : Colors.black),
           ),
         ),
       ),

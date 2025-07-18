@@ -18,74 +18,72 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isDark = Get.find<ThemeController>().isDark.value;
-    var themeController = Get.find<ThemeController>();
-    var projectController = Get.find<ProjectController>();
+    final themeController = Get.find<ThemeController>();
+    final projectController = Get.find<ProjectController>();
     final drawerController = Get.find<ADrawerController>();
 
-    return AdvancedDrawer(
-      backdropColor:
-          isDark
+    return Obx(() {
+      final isDark = themeController.isDark.value;
+
+      return AdvancedDrawer(
+        backdropColor: isDark
+            ? AppColors().darkModeColors[0]
+            : AppColors().lightModeColors[0],
+        controller: drawerController.advancedDrawerController,
+        animationCurve: Curves.easeInOut,
+        animationDuration: const Duration(milliseconds: 300),
+        animateChildDecoration: true,
+        rtlOpening: false,
+        disabledGestures: false,
+        childDecoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: isDark ? Colors.white30 : Colors.black45,
+              blurRadius: 20.0,
+              spreadRadius: 5.0,
+              offset: const Offset(-20.0, 0.0),
+            ),
+          ],
+          borderRadius: BorderRadius.circular(30),
+        ),
+        drawer: drawerWidget(
+          isDark,
+          onPressed: () {
+            themeController.toggleTheme();
+          },
+        ),
+        child: Scaffold(
+          backgroundColor: isDark
               ? AppColors().darkModeColors[0]
               : AppColors().lightModeColors[0],
-      controller: drawerController.advancedDrawerController,
-      animationCurve: Curves.easeInOut,
-      animationDuration: const Duration(milliseconds: 300),
-      animateChildDecoration: true,
-      rtlOpening: false,
-      disabledGestures: false,
-      childDecoration: BoxDecoration(
-        boxShadow: [
-          BoxShadow(
-            color: isDark ? Colors.white30 : Colors.black45,
-            blurRadius: 20.0,
-            spreadRadius: 5.0,
-            offset: const Offset(-20.0, 0.0),
-          ),
-        ],
-        borderRadius: BorderRadius.circular(30),
-      ),
-      drawer: drawerWidget(
-        isDark,
-        onPressed: () {
-          themeController.toggleTheme();
-        },
-      ),
-      child: Scaffold(
-        backgroundColor:
-            isDark
-                ? AppColors().darkModeColors[0]
-                : AppColors().lightModeColors[0],
-        body: Padding(
-          padding: const EdgeInsets.all(15.0),
-          child: Column(
-            children: [
-              headerWidget(
-                isDark,
-                onPressed: () {
-                  drawerController.advancedDrawerController.showDrawer();
-                },
-              ),
-
-              //SizedBox(height: 50),
-              Expanded(
-                child: Obx(
-                  () =>
-                      projectController.projectList.isEmpty
-                          ? emptyWidget()
-                          : projectCardWidget(projectController, isDark),
+          body: Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: Column(
+              children: [
+                headerWidget(
+                  isDark,
+                  onPressed: () {
+                    drawerController.advancedDrawerController.showDrawer();
+                  },
                 ),
-              ),
-            ],
+                Expanded(
+                  child: Obx(
+                    () => projectController.projectList.isEmpty
+                        ? emptyWidget()
+                        : projectCardWidget(projectController, isDark),
+                  ),
+                ),
+              ],
+            ),
           ),
+          floatingActionButton: Obx(() {
+            int index = projectController.projectList.length %
+                ProjectColors.palette.length;
+            return newTaskBottomWidget(
+                context, ProjectColors.palette[index]);
+          }),
         ),
-        floatingActionButton: Obx(() {
-          int index =
-              projectController.projectList.length %
-              ProjectColors.palette.length;
-          return newTaskBottomWidget(context, ProjectColors.palette[index]);
-        }),
-      ),
-    );
+      );
+    });
   }
 }
