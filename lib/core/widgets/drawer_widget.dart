@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:todolistapp/core/app_colors.dart';
+import 'package:todolistapp/core/widgets/text_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 Widget drawerWidget(bool isDark, {Function()? onPressed}) {
@@ -63,26 +64,20 @@ Widget drawerWidget(bool isDark, {Function()? onPressed}) {
           ),
           const SizedBox(height: 5),
           Center(
-            child: Text(
-              'Majid Ghasemy',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.w600,
-                fontFamily: 'ClashDisplay',
-                color: isDark ? Colors.white : Colors.black,
-              ),
+            child: textWidget(
+              isDark: isDark,
+              txt: 'Majid Ghasemy',
+              fontWeight: FontWeight.w600,
+              fontSize: 18,
             ),
           ),
           const SizedBox(height: 10),
           Center(
-            child: Text(
-              'Mid Level Flutter Developer',
-              style: TextStyle(
-                fontSize: 12,
-                fontWeight: FontWeight.w400,
-                fontFamily: 'ClashDisplay',
-                color: isDark ? Colors.white : Colors.black,
-              ),
+            child: textWidget(
+              isDark: isDark,
+              txt: 'Mid Level Flutter Developer',
+              fontWeight: FontWeight.w400,
+              fontSize: 12,
             ),
           ),
           const SizedBox(height: 30),

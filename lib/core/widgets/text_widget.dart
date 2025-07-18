@@ -6,9 +6,10 @@ Widget textWidget({
   bool isBottom = false,
   String weight = "r",
   double fontSize = 24,
+ FontWeight fontWeight = FontWeight.normal,
 }) {
   String fontFamily = "ClashDisplay";
-  FontWeight fontWeight = FontWeight.normal;
+ // FontWeight fontWeight = FontWeight.normal;
 
   switch (weight.toLowerCase()) {
     case "r":
