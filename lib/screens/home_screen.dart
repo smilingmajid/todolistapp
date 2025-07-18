@@ -36,7 +36,7 @@ class HomeScreen extends StatelessWidget {
       childDecoration: BoxDecoration(
         boxShadow: [
           BoxShadow(
-            color: isDark? Colors.white30:Colors.black45,
+            color: isDark ? Colors.white30 : Colors.black45,
             blurRadius: 20.0,
             spreadRadius: 5.0,
             offset: const Offset(-20.0, 0.0),
@@ -65,6 +65,7 @@ class HomeScreen extends StatelessWidget {
                   drawerController.advancedDrawerController.showDrawer();
                 },
               ),
+
               SizedBox(height: 50),
 
               Expanded(
