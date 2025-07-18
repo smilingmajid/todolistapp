@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'package:get/get.dart';
+
 import 'package:todolistapp/core/project_colors.dart';
 import '../controllers/adrawer_controller.dart';
 import '../core/app_colors.dart';
@@ -66,8 +67,7 @@ class HomeScreen extends StatelessWidget {
                 },
               ),
 
-              SizedBox(height: 50),
-
+              //SizedBox(height: 50),
               Expanded(
                 child: Obx(
                   () =>
