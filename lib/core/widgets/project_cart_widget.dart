@@ -20,7 +20,10 @@ Widget projectCardWidget(projectController, isDark) {
           itemBuilder: (context, index) {
             final project = projectController.projectList[index];
 
-            return GestureDetector(
+            return 
+            
+            
+            GestureDetector(
               onTap: () async {
                 // print("object");
                 ProjectModel selectedProject =

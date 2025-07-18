@@ -97,6 +97,7 @@ class TaskScreen extends StatelessWidget {
                           decoration: InputDecoration(
                             hintText: 'Add new task...',
                             hintStyle: TextStyle(
+                              // ignore: deprecated_member_use
                               color: Colors.white.withOpacity(0.7),
                               fontFamily: 'ClashDisplay',
                             ),
