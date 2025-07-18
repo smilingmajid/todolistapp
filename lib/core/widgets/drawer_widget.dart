@@ -1,34 +1,12 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:line_icons/line_icons.dart';
 import 'package:todolistapp/core/app_colors.dart';
 import 'package:todolistapp/core/widgets/text_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
-
+import 'package:todolistapp/core/app_data.dart';
 Widget drawerWidget(bool isDark, {Function()? onPressed}) {
-  final List<Map<String, dynamic>> drawerItems = [
-    {
-      'icon': LineIcons.github,
-      'title': 'Github',
-      'url': 'https://github.com/smilingmajid',
-    },
-    {
-      'icon': LineIcons.linkedinIn,
-      'title': 'Linkedin',
-      'url': 'https://www.linkedin.com/in/smiling-majid/',
-    },
-    {
-      'icon': LineIcons.telegram,
-      'title': 'Telegram',
-      'url': 'https://t.me/smiling_majid',
-    },
-    {
-      'icon': Iconsax.instagram,
-      'title': 'Instagram',
-      'url': 'https://www.instagram.com/smilingmajid/',
-    },
-  ];
+
 
   return Container(
     padding: const EdgeInsets.all(20),
@@ -83,9 +61,9 @@ Widget drawerWidget(bool isDark, {Function()? onPressed}) {
           const SizedBox(height: 30),
           Expanded(
             child: ListView.builder(
-              itemCount: drawerItems.length,
+              itemCount: AppData().drawerItems.length,
               itemBuilder: (context, index) {
-                final item = drawerItems[index];
+                final item = AppData().drawerItems[index];
                 return ListTile(
                   leading: Icon(
                     item['icon'],
