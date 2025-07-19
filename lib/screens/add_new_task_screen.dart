@@ -110,10 +110,11 @@ class AddNewProjectScreen extends StatelessWidget {
                             () {
                               projectController.addProject(
                                 addProjectController.text,
+                                // ignore: deprecated_member_use
                                 projectColor!.value,
                               );
                               addProjectController.clear();
-                              Navigator.pop(context); // بستن صفحه بعد از ایجاد
+                              Navigator.pop(context);
                             },
                             context,
                             isDark,
