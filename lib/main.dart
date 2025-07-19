@@ -3,22 +3,25 @@ import 'package:get/get.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_i18n/flutter_i18n_delegate.dart';
 import 'package:flutter_i18n/loaders/file_translation_loader.dart';
+import 'dart:ui';
 import '../screens/splash_screen.dart';
 import 'bindings/my_bindings.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+  final deviceLocale = window.locale;
+
   final FlutterI18nDelegate translationDelegate = FlutterI18nDelegate(
     translationLoader: FileTranslationLoader(
       useCountryCode: false,
-      fallbackFile: 'en',
+      fallbackFile: 'fa',
       basePath: 'assets/i18n',
-      forcedLocale: const Locale('en'),
+      forcedLocale: null,
     ),
   );
 
- await translationDelegate.load(const Locale('en'));
+  await translationDelegate.load(deviceLocale);
 
   runApp(MyApp(translationDelegate));
 }
@@ -47,6 +50,16 @@ class MyApp extends StatelessWidget {
         Locale('ar'),
         Locale('de'),
       ],
+      localeResolutionCallback: (deviceLocale, supportedLocales) {
+        if (deviceLocale != null) {
+          for (var locale in supportedLocales) {
+            if (locale.languageCode == deviceLocale.languageCode) {
+              return locale;
+            }
+          }
+        }
+        return const Locale('fa');
+      },
     );
   }
 }
