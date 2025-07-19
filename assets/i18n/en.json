@@ -1,4 +1,6 @@
 {
-  "home_screen": "Home screen",
-  "no_projects": "No projects yet.\nTap + to add a new project."
+  "home_screen": {
+    "title": "Home",
+    "no_projects": "No projects yet.\nTap + to add a new project."
+  }
 }

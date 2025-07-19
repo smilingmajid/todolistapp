@@ -27,9 +27,10 @@ class HomeScreen extends StatelessWidget {
       final isDark = themeController.isDark.value;
 
       return AdvancedDrawer(
-        backdropColor: isDark
-            ? AppColors().darkModeColors[0]
-            : AppColors().lightModeColors[0],
+        backdropColor:
+            isDark
+                ? AppColors().darkModeColors[0]
+                : AppColors().lightModeColors[0],
         controller: drawerController.advancedDrawerController,
         animationCurve: Curves.easeInOut,
         animationDuration: const Duration(milliseconds: 300),
@@ -54,14 +55,16 @@ class HomeScreen extends StatelessWidget {
           },
         ),
         child: Scaffold(
-          backgroundColor: isDark
-              ? AppColors().darkModeColors[0]
-              : AppColors().lightModeColors[0],
+          backgroundColor:
+              isDark
+                  ? AppColors().darkModeColors[0]
+                  : AppColors().lightModeColors[0],
           body: Padding(
             padding: const EdgeInsets.all(15.0),
             child: Column(
               children: [
                 headerWidget(
+                  FlutterI18n.translate(context, "home_screen.title"),
                   isDark,
                   onPressed: () {
                     drawerController.advancedDrawerController.showDrawer();
@@ -69,19 +72,25 @@ class HomeScreen extends StatelessWidget {
                 ),
                 Expanded(
                   child: Obx(
-                    () => projectController.projectList.isEmpty
-                        ? emptyWidget(FlutterI18n.translate(context, "home_screen.no_projects"))
-                        : projectCardWidget(projectController, isDark),
+                    () =>
+                        projectController.projectList.isEmpty
+                            ? emptyWidget(
+                              FlutterI18n.translate(
+                                context,
+                                "home_screen.no_projects",
+                              ),
+                            )
+                            : projectCardWidget(projectController, isDark),
                   ),
                 ),
               ],
             ),
           ),
           floatingActionButton: Obx(() {
-            int index = projectController.projectList.length %
+            int index =
+                projectController.projectList.length %
                 ProjectColors.palette.length;
-            return newTaskBottomWidget(
-                context, ProjectColors.palette[index]);
+            return newTaskBottomWidget(context, ProjectColors.palette[index]);
           }),
         ),
       );
