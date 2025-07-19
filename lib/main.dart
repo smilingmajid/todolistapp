@@ -1,10 +1,8 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_i18n/flutter_i18n_delegate.dart';
 import 'package:flutter_i18n/loaders/file_translation_loader.dart';
-
 import '../screens/splash_screen.dart';
 import 'bindings/my_bindings.dart';
 

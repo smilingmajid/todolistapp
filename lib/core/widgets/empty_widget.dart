@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
-Widget emptyWidget() {
+Widget emptyWidget(String txt) {
   return Column(
     children: [
       Lottie.asset('assets/empty.json'),
 
       Text(
-        'No projects yet.\nTap + to add a new project.',
+        txt,
         textAlign: TextAlign.center,
         style: TextStyle(
           fontSize: 16,

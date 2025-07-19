@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
+import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:get/get.dart';
 
 import 'package:todolistapp/core/project_colors.dart';
@@ -69,7 +70,7 @@ class HomeScreen extends StatelessWidget {
                 Expanded(
                   child: Obx(
                     () => projectController.projectList.isEmpty
-                        ? emptyWidget()
+                        ? emptyWidget(FlutterI18n.translate(context, "home_screen.no_projects"))
                         : projectCardWidget(projectController, isDark),
                   ),
                 ),
