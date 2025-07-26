@@ -1,3 +1,4 @@
+
 import 'dart:ui';
 
 import 'package:hive/hive.dart';
@@ -21,11 +22,11 @@ class ProjectModel {
     required this.title,
     required this.colorValue,
   });
+
   
-  /*
 
   Color get color => Color(colorValue);
-
+/*
   Map<String, dynamic> toMap() => {
         'id': id,
         'title': title,
