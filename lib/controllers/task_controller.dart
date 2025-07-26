@@ -36,17 +36,9 @@ class TaskController extends GetxController {
       createdAt: task.createdAt,
       projectId: task.projectId,
     );
-    /*
-      tasks[index] = TaskModel(
-        title: task.title,
-        description: task.description,
-        deadline: task.deadline,
-        isDone: !task.isDone,
-        createdAt: task.createdAt,
-        projectId: task.projectId,
-      );*/
+
          tasks[index] = newTask;
-    taskBox.putAt(index, newTask); // آپدیت در Hive
+    taskBox.putAt(index, newTask); 
 
     }
   }
