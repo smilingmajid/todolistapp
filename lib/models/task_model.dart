@@ -1,16 +1,14 @@
-
-
 import 'package:hive/hive.dart';
 
 part 'task_model.g.dart';
 
-@HiveType(typeId: 0)
+@HiveType(typeId: 1)
 class TaskModel {
   @HiveField(0)
   final String title;
   @HiveField(1)
   final String? description;
-  
+
   @HiveField(2)
   final bool isDone;
   @HiveField(3)
@@ -18,7 +16,7 @@ class TaskModel {
   @HiveField(4)
   final DateTime deadline;
   @HiveField(5)
-  final String projectId; 
+  final String projectId;
 
   TaskModel({
     required this.title,
@@ -29,7 +27,7 @@ class TaskModel {
     DateTime? createdAt,
   }) : createdAt = createdAt ?? DateTime.now();
 
-/*
+  /*
   Map<String, dynamic> toMap() {
     return {
       'title': title,
