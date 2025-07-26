@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import 'package:todolistapp/controllers/theme_controller.dart';
 import 'package:todolistapp/core/app_colors.dart';
 import 'package:todolistapp/core/widgets/glass_circle_widget.dart';
@@ -110,11 +109,11 @@ class AddNewProjectScreen extends StatelessWidget {
                             () {
                               projectController.addProject(
                                 addProjectController.text,
+                                // ignore: deprecated_member_use
                                 projectColor!.value,
                               );
                               addProjectController.clear();
-                              Navigator.pop(context); // بستن صفحه بعد از ایجاد
-                            },
+                              Navigator.pop(context);   },
                             context,
                             isDark,
                           ),

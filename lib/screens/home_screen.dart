@@ -26,9 +26,10 @@ class HomeScreen extends StatelessWidget {
       final isDark = themeController.isDark.value;
 
       return AdvancedDrawer(
-        backdropColor: isDark
-            ? AppColors().darkModeColors[0]
-            : AppColors().lightModeColors[0],
+        backdropColor:
+            isDark
+                ? AppColors().darkModeColors[0]
+                : AppColors().lightModeColors[0],
         controller: drawerController.advancedDrawerController,
         animationCurve: Curves.easeInOut,
         animationDuration: const Duration(milliseconds: 300),
@@ -53,9 +54,10 @@ class HomeScreen extends StatelessWidget {
           },
         ),
         child: Scaffold(
-          backgroundColor: isDark
-              ? AppColors().darkModeColors[0]
-              : AppColors().lightModeColors[0],
+          backgroundColor:
+              isDark
+                  ? AppColors().darkModeColors[0]
+                  : AppColors().lightModeColors[0],
           body: Padding(
             padding: const EdgeInsets.all(15.0),
             child: Column(
@@ -68,19 +70,31 @@ class HomeScreen extends StatelessWidget {
                 ),
                 Expanded(
                   child: Obx(
-                    () => projectController.projectList.isEmpty
-                        ? emptyWidget()
-                        : projectCardWidget(projectController, isDark),
+                    () =>
+                        projectController.projectList.isEmpty
+                            ? emptyWidget()
+                            : projectCardWidget(projectController, isDark),
                   ),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    var currentLocale = Get.locale;
+                    if (currentLocale == Locale('fa', 'IR')) {
+                      Get.updateLocale(Locale('en', 'US'));
+                    } else {
+                      Get.updateLocale(Locale('fa', 'IR'));
+                    }
+                  },
+                  child: Text('Change Language'),
                 ),
               ],
             ),
           ),
           floatingActionButton: Obx(() {
-            int index = projectController.projectList.length %
+            int index =
+                projectController.projectList.length %
                 ProjectColors.palette.length;
-            return newTaskBottomWidget(
-                context, ProjectColors.palette[index]);
+            return newTaskBottomWidget(context, ProjectColors.palette[index]);
           }),
         ),
       );
