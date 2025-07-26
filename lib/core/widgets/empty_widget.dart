@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 
 Widget emptyWidget() {
@@ -7,7 +8,7 @@ Widget emptyWidget() {
       Lottie.asset('assets/empty.json'),
 
       Text(
-        'No projects yet.\nTap + to add a new project.',
+        'HomeScreen.NoProject'.tr,
         textAlign: TextAlign.center,
         style: TextStyle(
           fontSize: 16,
