@@ -1,8 +1,19 @@
 import 'dart:ui';
 
+import 'package:hive/hive.dart';
+part 'project_model.g.dart';
+
+@HiveType(typeId: 0)
+
 class ProjectModel {
+
+    @HiveField(0)
   final String id;
+
+  @HiveField(1)
   final String title;
+
+  @HiveField(2)
   final int colorValue;
 
   ProjectModel({
@@ -10,6 +21,8 @@ class ProjectModel {
     required this.title,
     required this.colorValue,
   });
+  
+  /*
 
   Color get color => Color(colorValue);
 
@@ -23,5 +36,5 @@ class ProjectModel {
         id: map['id'],
         title: map['title'],
         colorValue: map['colorValue'],
-      );
+      );*/
 }
