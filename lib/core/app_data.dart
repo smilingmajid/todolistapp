@@ -2,8 +2,7 @@ import 'package:iconsax/iconsax.dart';
 import 'package:line_icons/line_icons.dart';
 
 class AppData {
-
-    final List<Map<String, dynamic>> drawerItems = [
+  final List<Map<String, dynamic>> drawerItems = [
     {
       'icon': LineIcons.github,
       'title': 'Github',
@@ -24,6 +23,11 @@ class AppData {
       'title': 'Instagram',
       'url': 'https://www.instagram.com/smilingmajid/',
     },
-  ];
 
+    {
+      'icon': LineIcons.youtube,
+      'title': 'YouTube',
+      'url': 'https://www.youtube.com/@SmilingMajid',
+    },
+  ];
 }
