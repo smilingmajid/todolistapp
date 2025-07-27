@@ -78,6 +78,13 @@ class HomeScreen extends StatelessWidget {
                 ),
                 ElevatedButton(
                   onPressed: () {
+                    Get.updateLocale(Locale('de', 'DE')); // برای آلمانی
+                  },
+                  child: Text('Deutsch'),
+                ),
+
+                /*ElevatedButton(
+                  onPressed: () {
                     var currentLocale = Get.locale;
                     if (currentLocale == Locale('fa', 'IR')) {
                       Get.updateLocale(Locale('en', 'US'));
@@ -86,7 +93,7 @@ class HomeScreen extends StatelessWidget {
                     }
                   },
                   child: Text('Change Language'),
-                ),
+                ),*/
               ],
             ),
           ),
