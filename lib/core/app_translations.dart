@@ -21,7 +21,7 @@ class AppTranslations extends Translations {
 
     'de_DE': flatten({
       'HomeScreen': {
-        'AppBar': 'خانه',
+        'AppBar': 'HomeScreen',
         'NoProject':
             'Noch keine Projekte vorhanden.\nTippe auf +, um ein neues Projekt hinzuzufügen',
       },
@@ -29,11 +29,10 @@ class AppTranslations extends Translations {
     }),
     'ar_SA': flatten({
       'HomeScreen': {
-        'AppBar': 'خانه',
-        'NoProject':
-            'Noch keine Projekte vorhanden.\nTippe auf +, um ein neues Projekt hinzuzufügen',
+        'AppBar': 'الرئيسية',
+        'NoProject': 'لا توجد مشاريع بعد.\nانقر على + لإضافة مشروع جديد.',
       },
-      'TaskScreen': {'AppBar': 'وظایف'},
+      'TaskScreen': {'AppBar': 'المهام'},
     }),
   };
 
