@@ -84,7 +84,7 @@ class HomeScreen extends StatelessWidget {
                   },
                   child: Row(
                     children: [
-                      Text('Deutsch'),
+                     // Text(languageController.flags[languageController.currentIndex.value].countryCode),
                     ],
                   ),
                 ),
