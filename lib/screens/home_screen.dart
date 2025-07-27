@@ -1,3 +1,4 @@
+import 'package:circle_flags/circle_flags.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'package:get/get.dart';
@@ -78,14 +79,17 @@ class HomeScreen extends StatelessWidget {
                             : projectCardWidget(projectController, isDark),
                   ),
                 ),
-                ElevatedButton(
-                  onPressed: () {
-                    languageController.toggleLanguage();
-                  },
-                  child: Row(
-                    children: [
-                     // Text(languageController.flags[languageController.currentIndex.value].countryCode),
-                    ],
+                Obx(
+                  () => ElevatedButton.icon(
+                    onPressed: languageController.nextLanguage,
+                    icon: CircleFlag(
+                      languageController.currentFlagCode,
+                      size: 32,
+                    ),
+                    label: Text(
+                      languageController.currentLanguageName,
+                      style: TextStyle(fontSize: 16),
+                    ),
                   ),
                 ),
               ],
