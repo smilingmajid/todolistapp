@@ -82,7 +82,11 @@ class HomeScreen extends StatelessWidget {
                   onPressed: () {
                     languageController.toggleLanguage();
                   },
-                  child: Text('Deutsch'),
+                  child: Row(
+                    children: [
+                      Text('Deutsch'),
+                    ],
+                  ),
                 ),
               ],
             ),

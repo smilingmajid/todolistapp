@@ -1,9 +1,22 @@
+import 'package:circle_flags/circle_flags.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
 class LanguageController extends GetxController {
-  final RxInt _currentIndex = 0.obs;
+  final RxInt currentIndex = 0.obs;
+  final RxList<String> languageNames = <String>[
+    'English',
+    'Deutsch',
+    'فارسی',
+    'العربية',
+  ].obs;
 
+  final RxList<CircleFlag> languageCodes = <CircleFlag>[
+    CircleFlag('us'),
+    CircleFlag('de'),
+    CircleFlag('fa'),
+    CircleFlag('ar'),
+  ].obs;
   final List<Locale> locales = const [
     Locale('en', 'US'),
     Locale('de', 'DE'),
@@ -12,9 +25,9 @@ class LanguageController extends GetxController {
   ];
 
   void toggleLanguage() {
-    _currentIndex.value = (_currentIndex.value + 1) % locales.length;
-    Get.updateLocale(locales[_currentIndex.value]);
+    currentIndex.value = (currentIndex.value + 1) % locales.length;
+    Get.updateLocale(locales[currentIndex.value]);
   }
 
-  Locale get currentLocale => locales[_currentIndex.value];
+  Locale get currentLocale => locales[currentIndex.value];
 }
