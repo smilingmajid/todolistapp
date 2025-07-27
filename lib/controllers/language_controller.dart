@@ -11,7 +11,7 @@ class LanguageController extends GetxController {
     'العربية',
   ].obs;
 
-  final RxList<CircleFlag> languageCodes = <CircleFlag>[
+  final RxList<CircleFlag> flags = <CircleFlag>[
     CircleFlag('us'),
     CircleFlag('de'),
     CircleFlag('fa'),
