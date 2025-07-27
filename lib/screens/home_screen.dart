@@ -79,19 +79,7 @@ class HomeScreen extends StatelessWidget {
                             : projectCardWidget(projectController, isDark),
                   ),
                 ),
-                Obx(
-                  () => ElevatedButton.icon(
-                    onPressed: languageController.nextLanguage,
-                    icon: CircleFlag(
-                      languageController.currentFlagCode,
-                      size: 32,
-                    ),
-                    label: Text(
-                      languageController.currentLanguageName,
-                      style: TextStyle(fontSize: 16),
-                    ),
-                  ),
-                ),
+              
               ],
             ),
           ),
