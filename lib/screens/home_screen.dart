@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 
 import 'package:todolistapp/core/project_colors.dart';
 import '../controllers/adrawer_controller.dart';
+import '../controllers/language_controller.dart';
 import '../core/app_colors.dart';
 import '../controllers/project_controller.dart';
 import '../controllers/theme_controller.dart';
@@ -21,6 +22,7 @@ class HomeScreen extends StatelessWidget {
     final themeController = Get.find<ThemeController>();
     final projectController = Get.find<ProjectController>();
     final drawerController = Get.find<ADrawerController>();
+    final languageController = Get.find<LanguageController>();
 
     return Obx(() {
       final isDark = themeController.isDark.value;
@@ -78,22 +80,10 @@ class HomeScreen extends StatelessWidget {
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    Get.updateLocale(Locale('de', 'DE')); // برای آلمانی
+                    languageController.toggleLanguage();
                   },
                   child: Text('Deutsch'),
                 ),
-
-                /*ElevatedButton(
-                  onPressed: () {
-                    var currentLocale = Get.locale;
-                    if (currentLocale == Locale('fa', 'IR')) {
-                      Get.updateLocale(Locale('en', 'US'));
-                    } else {
-                      Get.updateLocale(Locale('fa', 'IR'));
-                    }
-                  },
-                  child: Text('Change Language'),
-                ),*/
               ],
             ),
           ),
