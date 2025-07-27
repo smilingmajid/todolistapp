@@ -18,6 +18,15 @@ class AppTranslations extends Translations {
       },
       'TaskScreen': {'AppBar': 'وظایف'},
     }),
+
+       'de_DE': flatten({
+      'HomeScreen': {
+        'AppBar': 'خانه',
+        'NoProject':
+            'Noch keine Projekte vorhanden.\nTippe auf +, um ein neues Projekt hinzuzufügen',
+      },
+      'TaskScreen': {'AppBar': 'وظایف'},
+    }),
   };
 
   Map<String, String> flatten(Map<String, dynamic> map, [String prefix = '']) {
