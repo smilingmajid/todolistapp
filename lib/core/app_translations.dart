@@ -19,7 +19,15 @@ class AppTranslations extends Translations {
       'TaskScreen': {'AppBar': 'وظایف'},
     }),
 
-       'de_DE': flatten({
+    'de_DE': flatten({
+      'HomeScreen': {
+        'AppBar': 'خانه',
+        'NoProject':
+            'Noch keine Projekte vorhanden.\nTippe auf +, um ein neues Projekt hinzuzufügen',
+      },
+      'TaskScreen': {'AppBar': 'وظایف'},
+    }),
+    'ar_SA': flatten({
       'HomeScreen': {
         'AppBar': 'خانه',
         'NoProject':

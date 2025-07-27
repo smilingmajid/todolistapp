@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 import '../screens/splash_screen.dart';
 import 'bindings/my_bindings.dart';
@@ -26,20 +27,26 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-           supportedLocales: const [
-        Locale('en', 'US'),
-        Locale('de', 'DE'),
-        Locale('fa', 'IR'),
-        Locale('ar', 'SA'),
-      ],
-       translations: AppTranslations(), 
-       locale:Locale('en', 'US'),
-       fallbackLocale: Locale('fa', 'IR'),
+  return GetMaterialApp(
+  translations: AppTranslations(),
+  locale: Locale('en', 'US'),
+  fallbackLocale: Locale('en', 'US'),
+  supportedLocales: const [
+    Locale('en', 'US'),
+    Locale('de', 'DE'),
+    Locale('fa', 'IR'),
+    Locale('ar', 'SA'),
+  ],
+  localizationsDelegates: const [
+    GlobalMaterialLocalizations.delegate,
+    GlobalWidgetsLocalizations.delegate,
+    GlobalCupertinoLocalizations.delegate,
+  ],
       title: 'todolistapp',
       debugShowCheckedModeBanner: false,
       home: SplashScreen(),
       initialBinding: MyBindings(),
-    );
+);
+
   }
 }
