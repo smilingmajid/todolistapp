@@ -8,19 +8,17 @@ Widget textWidget({
   double fontSize = 24,
   FontWeight fontWeight = FontWeight.normal,
 }) {
-  String fontFamily = "ClashDisplay";
+  final isFarsiOrArabic = RegExp(r'[\u0600-\u06FF]').hasMatch(txt);
+
+  String fontFamily = isFarsiOrArabic ? "IranYekan" : "ClashDisplay";
 
   switch (weight.toLowerCase()) {
-    case "r":
-      fontFamily = "ClashDisplay";
-      break;
     case "title":
-      fontFamily = "ClashDisplay";
       fontSize = 32;
       fontWeight = FontWeight.bold;
       break;
     case "m":
-      fontFamily = "";
+      fontWeight = FontWeight.w500;
       break;
     case "c":
       fontFamily = "Cinema";
@@ -43,5 +41,6 @@ Widget textWidget({
       fontFamily: fontFamily,
       fontWeight: fontWeight,
     ),
+    textDirection: isFarsiOrArabic ? TextDirection.rtl : TextDirection.ltr,
   );
 }

@@ -112,6 +112,12 @@ flutter:
     - assets/fonts/
 
   fonts:
+
+    - family: IranYekan
+      fonts:
+        - asset: assets/fonts/IRANYekanRegular.ttf
+        - asset: assets/fonts/IRANYekanBold.ttf
+
     - family: ClashDisplay
       fonts:
         - asset: assets/fonts/ClashDisplay-Regular.otf
