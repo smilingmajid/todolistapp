@@ -67,7 +67,8 @@ Widget projectCardWidget(projectController, isDark, bool isRtl) {
                               isBottom: true,
                               isDark: false,
                               txt: project.title,
-                              weight: 'title',
+                              fontWeight: FontWeight.w600,
+                              fontSize: 30,
                             ),
                             textWidget(
                               isBottom: true,
