@@ -46,13 +46,18 @@ Widget drawerWidget(
                 ),
               ),
               Spacer(),
+
               Obx(
                 () => IconButton(
-                  onPressed: languageController.nextLanguage,
-                  icon: CircleFlag(
-                    languageController.currentFlagCode,
-                    size: 30,
+                  iconSize: 40,
+                  icon: Image.asset(
+                    languageController.flagPaths[languageController
+                        .currentIndex
+                        .value],
+                    width: 40,
+                    height: 40,
                   ),
+                  onPressed: languageController.nextLanguage,
                 ),
               ),
             ],
