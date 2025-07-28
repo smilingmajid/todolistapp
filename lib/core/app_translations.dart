@@ -5,7 +5,7 @@ class AppTranslations extends Translations {
   Map<String, Map<String, String>> get keys => {
     'en_US': flatten({
       'HomeScreen': {
-        'AppBar': 'HomeScreen',
+        'AppBar': 'Home Screen',
         'NoProject': 'No projects yet.\nTap + to add a new project.',
       },
       'TaskScreen': {
@@ -13,23 +13,20 @@ class AppTranslations extends Translations {
         'ActiveTask': 'In Progress Tasks',
         'CompletedTasks': 'Completed Tasks',
       },
-    }),
-    'fa_IR': flatten({
-      'HomeScreen': {
-        'AppBar': 'خانه',
-        'NoProject':
-            'هنوز هیچ پروژه‌ای وجود ندارد.\nبرای افزودن پروژه جدید، روی + بزنید.',
-      },
-      'TaskScreen': {
-        'AddTask': 'افزودن وظیفه جدید ...',
-        'ActiveTask': 'وظایف در حال انجام',
-        'CompletedTasks': 'وظایف تکمیل‌شده',
+      'DrawerWidget': {
+        'GitHub': 'GitHub',
+        'Instagram': 'Instagram',
+        'Lindin': 'Linkedin',
+        'Telegram': 'Telegram',
+        'YouTube': 'YouTube',
+        'Name': 'Majid Ghasemy',
+        'Job': 'Mid Level flutter Developer',
       },
     }),
 
     'de_DE': flatten({
       'HomeScreen': {
-        'AppBar': 'HomeScreen',
+        'AppBar': 'Home Screen',
         'NoProject':
             'Noch keine Projekte vorhanden.\nTippe auf +, um ein neues Projekt hinzuzufügen',
       },
@@ -38,7 +35,39 @@ class AppTranslations extends Translations {
         'ActiveTask': 'Laufende Aufgaben',
         'CompletedTasks': 'Abgeschlossene Aufgaben',
       },
+
+      'DrawerWidget': {
+        'GitHub': 'GitHub',
+        'Instagram': 'Instagram',
+        'Lindin': 'Linkedin',
+        'Telegram': 'Telegram',
+        'YouTube': 'YouTube',
+        'Name': 'Majid Ghasemy',
+        'Job': 'Mid Level flutter Developer',
+      },
     }),
+    'fa_IR': flatten({
+      'HomeScreen': {
+        'AppBar': 'صفحه اصلی',
+        'NoProject':
+            'هنوز هیچ پروژه‌ای وجود ندارد.\nبرای افزودن پروژه جدید، روی + بزنید.',
+      },
+      'TaskScreen': {
+        'AddTask': 'افزودن وظیفه جدید ...',
+        'ActiveTask': 'وظایف در حال انجام',
+        'CompletedTasks': 'وظایف تکمیل‌شده',
+      },
+      'DrawerWidget': {
+        'GitHub': 'گیت هاب',
+        'Instagram': 'اینستاگرام',
+        'Lindin': 'لینکدین',
+        'Telegram': 'تلگرام',
+        'YouTube': 'یوتیوب',
+        'Name': 'مجید قاسمی',
+        'Job': 'توسعه دهنده فلاتر',
+      },
+    }),
+
     'ar_SA': flatten({
       'HomeScreen': {
         'AppBar': 'الرئيسية',
@@ -48,6 +77,15 @@ class AppTranslations extends Translations {
         'AddTask': 'أضف مهمة جديدة ...',
         'ActiveTask': 'المهام الجارية',
         'CompletedTasks': 'المهام المكتملة',
+      },
+      'DrawerWidget': {
+        'GitHub': 'جيت هاب',
+        'Instagram': 'إنستغرام',
+        'Lindin': 'لينكد إن',
+        'Telegram': 'تيليجرام',
+        'YouTube': 'يوتيوب',
+        'Name': 'مجيد قاسمي',
+        'Job': 'مطور فلاتر',
       },
     }),
   };
