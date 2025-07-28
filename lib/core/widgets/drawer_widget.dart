@@ -1,8 +1,7 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:todolistapp/core/app_colors.dart';
+import 'chang_theme_widget.dart';
 import 'package:todolistapp/core/widgets/text_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:todolistapp/core/app_data.dart';
@@ -35,7 +34,7 @@ Widget drawerWidget(
           const SizedBox(height: 20),
           Row(
             children: [
-           
+           changThemeWidget(isDark, onPressed),
               Spacer(),
 
               flagBottomWidget(languageController),
