@@ -13,6 +13,9 @@ class LanguageController extends GetxController {
 
   final RxInt currentIndex = 0.obs;
 
+
+  final RxBool isRtl = false.obs;
+
   @override
   void onInit() {
     super.onInit();
@@ -23,7 +26,9 @@ class LanguageController extends GetxController {
     currentIndex.value = (currentIndex.value + 1) % languageCodes.length;
     final langCode = languageCodes[currentIndex.value];
     final locale = getLocaleFromLangCode(langCode);
+
     Hive.box('settings').put('langCode', langCode);
+    isRtl.value = _isRtl(langCode);
 
     Get.updateLocale(locale);
   }
@@ -31,6 +36,7 @@ class LanguageController extends GetxController {
   void _loadLanguage() {
     final langCode = Hive.box('settings').get('langCode', defaultValue: 'en');
     currentIndex.value = languageCodes.indexOf(langCode);
+    isRtl.value = _isRtl(langCode);
   }
 
   static Locale getLocaleFromLangCode(String code) {
@@ -45,5 +51,9 @@ class LanguageController extends GetxController {
       default:
         return const Locale('en', 'US');
     }
+  }
+
+  bool _isRtl(String code) {
+    return code == 'fa' || code == 'ar';
   }
 }
