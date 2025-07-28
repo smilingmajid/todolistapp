@@ -1,13 +1,13 @@
 import 'dart:ui';
-import 'package:circle_flags/circle_flags.dart';
+
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:todolistapp/core/app_colors.dart';
 import 'package:todolistapp/core/widgets/text_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:todolistapp/core/app_data.dart';
 import '../../controllers/language_controller.dart';
+import 'flag_bottom_widget.dart';
 
 Widget drawerWidget(
   LanguageController languageController,
@@ -47,7 +47,7 @@ Widget drawerWidget(
               ),
               Spacer(),
 
-             *
+              flagBottomWidget(languageController),
             ],
           ),
           Center(
