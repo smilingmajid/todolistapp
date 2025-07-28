@@ -30,7 +30,7 @@ Widget taskStatusWidget(
         ),
       ),
       SizedBox(width: 20),
-      textWidget(isDark: true, txt: title, fontSize: 16),
+      textWidget(isDark: true, txt: title, fontSize: 16,),
     ],
   );
 }
