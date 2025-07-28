@@ -8,7 +8,11 @@ class AppTranslations extends Translations {
         'AppBar': 'HomeScreen',
         'NoProject': 'No projects yet.\nTap + to add a new project.',
       },
-      'TaskScreen': {'AppBar': 'Tasks'},
+      'TaskScreen': {
+        'AddTask': 'Add New Task ...',
+        'ActiveTask': 'In Progress Tasks',
+        'CompletedTasks': 'Completed Tasks',
+      },
     }),
     'fa_IR': flatten({
       'HomeScreen': {
@@ -16,7 +20,11 @@ class AppTranslations extends Translations {
         'NoProject':
             'هنوز هیچ پروژه‌ای وجود ندارد.\nبرای افزودن پروژه جدید، روی + بزنید.',
       },
-      'TaskScreen': {'AppBar': 'وظایف'},
+      'TaskScreen': {
+        'AddTask': 'افزودن وظیفه جدید ...',
+        'ActiveTask': 'وظایف در حال انجام',
+        'CompletedTasks': 'وظایف تکمیل‌شده',
+      },
     }),
 
     'de_DE': flatten({
@@ -25,14 +33,22 @@ class AppTranslations extends Translations {
         'NoProject':
             'Noch keine Projekte vorhanden.\nTippe auf +, um ein neues Projekt hinzuzufügen',
       },
-      'TaskScreen': {'AppBar': 'وظایف'},
+      'TaskScreen': {
+        'AddTask': 'Neue Aufgabe hinzufügen ...',
+        'ActiveTask': 'Laufende Aufgaben',
+        'CompletedTasks': 'Abgeschlossene Aufgaben',
+      },
     }),
     'ar_SA': flatten({
       'HomeScreen': {
         'AppBar': 'الرئيسية',
         'NoProject': 'لا توجد مشاريع بعد.\nانقر على + لإضافة مشروع جديد.',
       },
-      'TaskScreen': {'AppBar': 'المهام'},
+      'TaskScreen': {
+        'AddTask': 'أضف مهمة جديدة ...',
+        'ActiveTask': 'المهام الجارية',
+        'CompletedTasks': 'المهام المكتملة',
+      },
     }),
   };
 
