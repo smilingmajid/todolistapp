@@ -28,32 +28,45 @@ class TaskController extends GetxController {
   void toggleDone(int index) {
     if (index >= 0 && index < tasks.length) {
       final task = tasks[index];
-         final newTask = TaskModel(
-      title: task.title,
-      description: task.description,
-      deadline: task.deadline,
-      isDone: !task.isDone,
-      createdAt: task.createdAt,
-      projectId: task.projectId,
-    );
-
-         tasks[index] = newTask;
-    taskBox.putAt(index, newTask); 
-
+      final newTask = TaskModel(
+        title: task.title,
+        description: task.description,
+        deadline: task.deadline,
+        isDone: !task.isDone,
+        createdAt: task.createdAt,
+        projectId: task.projectId,
+      );
+      tasks[index] = newTask;
+      taskBox.putAt(index, newTask);
     }
   }
 
   void updateTask(int index, TaskModel updatedTask) {
     if (index >= 0 && index < tasks.length) {
       tasks[index] = updatedTask;
+      taskBox.putAt(index, updatedTask);
     }
   }
 
   void clearAll() {
     tasks.clear();
+    taskBox.clear();
   }
 
   List<TaskModel> getTasksByProject(String projectId) {
     return tasks.where((task) => task.projectId == projectId).toList();
+  }
+
+  Map<String, Map<String, int>> getTaskStatsByProject() {
+    final Map<String, Map<String, int>> stats = {};
+    for (var task in tasks) {
+      final projectId = task.projectId;
+      stats.putIfAbsent(projectId, () => {'total': 0, 'done': 0});
+      stats[projectId]!['total'] = stats[projectId]!['total']! + 1;
+      if (task.isDone) {
+        stats[projectId]!['done'] = stats[projectId]!['done']! + 1;
+      }
+    }
+    return stats;
   }
 }
