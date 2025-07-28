@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 class LanguageController extends GetxController {
   final List<String> languageCodes = ['en', 'de', 'fa', 'ar'];
   final List<String> flagPaths = [
-    'assets/flags/us.png',
-    'assets/flags/de.png',
-    'assets/flags/ir.png',
-    'assets/flags/sa.png',
+    'assets/image/us.png',
+    'assets/image/de.png',
+    'assets/image/ir.png',
+    'assets/image/sa.png',
   ];
 
   final RxInt currentIndex = 0.obs;
