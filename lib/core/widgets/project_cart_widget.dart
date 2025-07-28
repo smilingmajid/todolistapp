@@ -27,7 +27,9 @@ Widget projectCardWidget(projectController, isDark, bool isRtl) {
                 await Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => TaskScreen(project: selectedProject),
+                    builder:
+                        (context) =>
+                            TaskScreen(project: selectedProject, isRtl: isRtl),
                   ),
                 );
               },

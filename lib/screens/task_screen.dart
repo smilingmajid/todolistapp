@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -13,10 +14,12 @@ import '../core/widgets/text_widget.dart';
 import '../models/project_model.dart';
 import '../models/task_model.dart';
 
+// ignore: must_be_immutable
 class TaskScreen extends StatelessWidget {
   final ProjectModel project;
 
-  const TaskScreen({super.key, required this.project});
+  bool isRtl;
+  TaskScreen({super.key, required this.project, required this.isRtl});
 
   @override
   Widget build(BuildContext context) {
@@ -46,42 +49,46 @@ class TaskScreen extends StatelessWidget {
               children: [
                 Positioned(
                   top: -50,
-                  right: -50,
+                  right: isRtl ? null : -50,
+                  left: isRtl ? -50 : null,
                   child: glassCircleWidget(200, 200, 0.15, const SizedBox()),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(20.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Stack(
-                        alignment: Alignment.center,
-                        children: [
-                          glassCircleWidget(65, 65, 0.2, const SizedBox()),
-                          glassCircleWidget(
-                            45,
-                            45,
-                            0.4,
-                            IconButton(
-                              icon: const Icon(
-                                Icons.arrow_back,
-                                color: Colors.white,
-                                size: 24,
+                  child: Directionality(
+                    textDirection: TextDirection.ltr,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Stack(
+                          alignment: Alignment.center,
+                          children: [
+                            glassCircleWidget(65, 65, 0.2, const SizedBox()),
+                            glassCircleWidget(
+                              45,
+                              45,
+                              0.4,
+                              IconButton(
+                                icon: const Icon(
+                                  Icons.arrow_back,
+                                  color: Colors.white,
+                                  size: 24,
+                                ),
+                                onPressed: () => Navigator.pop(context),
                               ),
-                              onPressed: () => Navigator.pop(context),
                             ),
-                          ),
-                        ],
-                      ),
-                      const Spacer(),
-                      textWidget(
-                        isDark: isDark,
-                        txt: project.title,
-                        fontSize: 24,
-                        weight: 'r',
-                      ),
-                      const Spacer(flex: 2),
-                    ],
+                          ],
+                        ),
+                        const Spacer(),
+                        textWidget(
+                          isDark: isDark,
+                          txt: project.title,
+                          fontSize: 24,
+                          weight: 'r',
+                        ),
+                        const Spacer(flex: 2),
+                      ],
+                    ),
                   ),
                 ),
                 Positioned(
