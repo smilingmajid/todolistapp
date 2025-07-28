@@ -47,19 +47,7 @@ Widget drawerWidget(
               ),
               Spacer(),
 
-              Obx(
-                () => IconButton(
-                  iconSize: 40,
-                  icon: Image.asset(
-                    languageController.flagPaths[languageController
-                        .currentIndex
-                        .value],
-                    width: 40,
-                    height: 40,
-                  ),
-                  onPressed: languageController.nextLanguage,
-                ),
-              ),
+             *
             ],
           ),
           Center(
