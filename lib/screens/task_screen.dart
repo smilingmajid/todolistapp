@@ -106,7 +106,7 @@ class TaskScreen extends StatelessWidget {
                             hintStyle: TextStyle(
                               // ignore: deprecated_member_use
                               color: Colors.white.withOpacity(0.7),
-                              fontFamily: 'ClashDisplay',
+                              fontFamily: isRtl ? 'IranYekan' : 'ClashDisplay',
                             ),
                             border: InputBorder.none,
                           ),

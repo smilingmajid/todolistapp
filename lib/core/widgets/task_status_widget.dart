@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todolistapp/core/widgets/text_widget.dart';
 
 Widget taskStatusWidget(
   Color statusColor,
@@ -29,17 +30,7 @@ Widget taskStatusWidget(
         ),
       ),
       SizedBox(width: 20),
-      Text(
-        title,
-
-        style: TextStyle(
-          color: Colors.grey[600],
-          fontFamily: "ClashDisplay",
-          fontSize: 16,
-          fontWeight: FontWeight.w600,
-          letterSpacing: 1.2,
-        ),
-      ),
+      textWidget(isDark: true, txt: title, fontSize: 16),
     ],
   );
 }
