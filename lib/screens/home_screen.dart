@@ -1,4 +1,3 @@
-import 'package:circle_flags/circle_flags.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'package:get/get.dart';
@@ -51,6 +50,7 @@ class HomeScreen extends StatelessWidget {
           borderRadius: BorderRadius.circular(30),
         ),
         drawer: drawerWidget(
+          languageController,
           isDark,
           onPressed: () {
             themeController.toggleTheme();
@@ -79,7 +79,6 @@ class HomeScreen extends StatelessWidget {
                             : projectCardWidget(projectController, isDark),
                   ),
                 ),
-              
               ],
             ),
           ),
