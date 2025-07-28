@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:todolistapp/core/app_colors.dart';
 import 'chang_theme_widget.dart';
 import 'package:todolistapp/core/widgets/text_widget.dart';
@@ -34,7 +35,7 @@ Widget drawerWidget(
           const SizedBox(height: 20),
           Row(
             children: [
-           changThemeWidget(isDark, onPressed),
+              changThemeWidget(isDark, onPressed),
               Spacer(),
 
               flagBottomWidget(languageController),
@@ -47,16 +48,16 @@ Widget drawerWidget(
           Center(
             child: textWidget(
               isDark: isDark,
-              txt: 'Majid Ghasemy',
+              txt: 'DrawerWidget.Name'.tr,
               fontWeight: FontWeight.w600,
-              fontSize: 18,
+              fontSize: 14,
             ),
           ),
           const SizedBox(height: 10),
           Center(
             child: textWidget(
               isDark: isDark,
-              txt: 'Mid Level Flutter Developer',
+              txt: 'DrawerWidget.Job'.tr,
               fontWeight: FontWeight.w400,
               fontSize: 12,
             ),
@@ -72,13 +73,12 @@ Widget drawerWidget(
                     item['icon'],
                     color: isDark ? Colors.white : Colors.black,
                   ),
-                  title: Text(
-                    item['title'],
-                    style: TextStyle(
-                      color: isDark ? Colors.white : Colors.black,
-                      fontFamily: 'ClashDisplay',
-                    ),
+                  title: textWidget(
+                    isDark: isDark,
+                    txt: item['title'],
+                    fontSize: 15,
                   ),
+
                   onTap: () async {
                     final url = Uri.parse(item['url']);
                     if (await canLaunchUrl(url)) {

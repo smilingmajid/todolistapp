@@ -1,3 +1,4 @@
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:line_icons/line_icons.dart';
 
@@ -5,28 +6,28 @@ class AppData {
   final List<Map<String, dynamic>> drawerItems = [
     {
       'icon': LineIcons.github,
-      'title': 'Github',
+      'title': 'DrawerWidget.GitHub'.tr,
       'url': 'https://github.com/smilingmajid',
     },
     {
       'icon': LineIcons.linkedinIn,
-      'title': 'Linkedin',
+      'title': 'DrawerWidget.Lindin'.tr,
       'url': 'https://www.linkedin.com/in/smiling-majid/',
     },
     {
       'icon': LineIcons.telegram,
-      'title': 'Telegram',
+      'title': 'DrawerWidget.Telegram'.tr,
       'url': 'https://t.me/smiling_majid',
     },
     {
       'icon': Iconsax.instagram,
-      'title': 'Instagram',
+      'title': 'DrawerWidget.Instagram'.tr,
       'url': 'https://www.instagram.com/smilingmajid/',
     },
 
     {
       'icon': LineIcons.youtube,
-      'title': 'YouTube',
+      'title': 'DrawerWidget.YouTube'.tr,
       'url': 'https://www.youtube.com/@SmilingMajid',
     },
   ];
