@@ -35,16 +35,7 @@ Widget drawerWidget(
           const SizedBox(height: 20),
           Row(
             children: [
-              Align(
-                alignment: Alignment.centerLeft,
-                child: IconButton(
-                  onPressed: onPressed,
-                  icon: Icon(
-                    isDark ? Iconsax.sun_1 : Iconsax.moon,
-                    color: isDark ? Colors.white : Colors.black,
-                  ),
-                ),
-              ),
+           
               Spacer(),
 
               flagBottomWidget(languageController),
