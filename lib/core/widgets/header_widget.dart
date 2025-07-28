@@ -15,8 +15,8 @@ Widget headerWidget(bool isDark, {Function()? onPressed}) {
       textWidget(
         isDark: isDark,
         txt: 'HomeScreen.AppBar'.tr,
-        fontSize: 20,
-       
+        fontSize: 15,
+        fontWeight: FontWeight.w400,
       ),
       Spacer(),
       RandomAvatar('saytoonz', height: 50, width: 50),
