@@ -102,7 +102,7 @@ class TaskScreen extends StatelessWidget {
                           controller: addTaskController,
                           style: const TextStyle(color: Colors.white),
                           decoration: InputDecoration(
-                            hintText: 'Add new task...',
+                            hintText: 'TaskScreen.AddTask'.tr,
                             hintStyle: TextStyle(
                               // ignore: deprecated_member_use
                               color: Colors.white.withOpacity(0.7),
@@ -167,7 +167,7 @@ class TaskScreen extends StatelessWidget {
                             Colors.orange,
                             const Color.fromARGB(255, 253, 239, 218),
                             activeTasks.length,
-                            'In Progress Tasks',
+                            'TaskScreen.ActiveTask'.tr,
                           ),
                           const SizedBox(height: 20),
                           ...activeTasks.map((task) {
@@ -198,7 +198,7 @@ class TaskScreen extends StatelessWidget {
                               Colors.green,
                               const Color.fromARGB(255, 232, 245, 233),
                               completedTasks.length,
-                              'Completed Tasks',
+                              'TaskScreen.CompletedTasks'.tr,
                             ),
                             const SizedBox(height: 20),
                             ...completedTasks.map((task) {
