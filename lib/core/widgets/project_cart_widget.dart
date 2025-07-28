@@ -6,6 +6,8 @@ import '../../models/project_model.dart';
 import '/core/widgets/glass_circle_widget.dart';
 
 Widget projectCardWidget(projectController, isDark, bool isRtl) {
+  final stats = projectController.getProjectStats();
+
   return Column(
     children: [
       SizedBox(height: 50),
@@ -19,6 +21,9 @@ Widget projectCardWidget(projectController, isDark, bool isRtl) {
           itemCount: projectController.projectList.length,
           itemBuilder: (context, index) {
             final project = projectController.projectList[index];
+            final projectStats = stats[project.id] ?? {'total': 0, 'done': 0};
+            final total = projectStats['total'];
+            final done = projectStats['done'];
 
             return GestureDetector(
               onTap: () async {
@@ -52,7 +57,6 @@ Widget projectCardWidget(projectController, isDark, bool isRtl) {
                         left: isRtl ? -50 : null,
                         child: glassCircleWidget(200, 200, 0.15, SizedBox()),
                       ),
-
                       Padding(
                         padding: const EdgeInsets.all(20.0),
                         child: Column(
@@ -64,6 +68,13 @@ Widget projectCardWidget(projectController, isDark, bool isRtl) {
                               isDark: false,
                               txt: project.title,
                               weight: 'title',
+                            ),
+                            textWidget(
+                              isBottom: true,
+                              isDark: false,
+                              txt: ' $done / $total',
+                              weight: 'r',
+                              fontSize: 16,
                             ),
                           ],
                         ),
