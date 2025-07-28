@@ -23,7 +23,7 @@ class HomeScreen extends StatelessWidget {
     final projectController = Get.find<ProjectController>();
     final drawerController = Get.find<ADrawerController>();
     final languageController = Get.find<LanguageController>();
-
+    bool isRtl = languageController.isRtl.value;
     return Obx(() {
       final isDark = themeController.isDark.value;
 
@@ -36,7 +36,7 @@ class HomeScreen extends StatelessWidget {
         animationCurve: Curves.easeInOut,
         animationDuration: const Duration(milliseconds: 300),
         animateChildDecoration: true,
-        rtlOpening: false,
+        rtlOpening: languageController.isRtl(),
         disabledGestures: false,
         childDecoration: BoxDecoration(
           boxShadow: [
@@ -76,7 +76,11 @@ class HomeScreen extends StatelessWidget {
                     () =>
                         projectController.projectList.isEmpty
                             ? emptyWidget()
-                            : projectCardWidget(projectController, isDark),
+                            : projectCardWidget(
+                              projectController,
+                              isDark,
+                              isRtl,
+                            ),
                   ),
                 ),
               ],

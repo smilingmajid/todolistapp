@@ -5,7 +5,7 @@ import 'package:todolistapp/screens/task_screen.dart';
 import '../../models/project_model.dart';
 import '/core/widgets/glass_circle_widget.dart';
 
-Widget projectCardWidget(projectController, isDark) {
+Widget projectCardWidget(projectController, isDark, bool isRtl) {
   return Column(
     children: [
       SizedBox(height: 50),
@@ -20,12 +20,8 @@ Widget projectCardWidget(projectController, isDark) {
           itemBuilder: (context, index) {
             final project = projectController.projectList[index];
 
-            return 
-            
-            
-            GestureDetector(
+            return GestureDetector(
               onTap: () async {
-                // print("object");
                 ProjectModel selectedProject =
                     projectController.projectList[index];
                 await Navigator.push(
@@ -50,9 +46,11 @@ Widget projectCardWidget(projectController, isDark) {
                     children: [
                       Positioned(
                         top: -50,
-                        right: -50,
+                        right: isRtl ? null : -50,
+                        left: isRtl ? -50 : null,
                         child: glassCircleWidget(200, 200, 0.15, SizedBox()),
                       ),
+
                       Padding(
                         padding: const EdgeInsets.all(20.0),
                         child: Column(
@@ -73,6 +71,7 @@ Widget projectCardWidget(projectController, isDark) {
                         projectController,
                         index,
                         isDark,
+                        isRtl,
                       ),
                     ],
                   ),

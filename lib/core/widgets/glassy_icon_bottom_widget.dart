@@ -9,10 +9,12 @@ Widget glassyIconBottomWidget(
   ProjectController projectController,
   int index,
   bool isDark,
+  bool isRtl,
 ) {
   return Positioned(
     bottom: 20,
-    right: 20,
+    right: isRtl ? null : 20,
+    left: isRtl ? 20 : null,
     child: GestureDetector(
       onTap: () {
         showDialogWidget(
