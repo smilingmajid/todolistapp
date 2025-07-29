@@ -12,8 +12,6 @@ class LanguageController extends GetxController {
   ];
 
   final RxInt currentIndex = 0.obs;
-
-
   final RxBool isRtl = false.obs;
 
   @override
@@ -23,37 +21,40 @@ class LanguageController extends GetxController {
   }
 
   void nextLanguage() {
-    currentIndex.value = (currentIndex.value + 1) % languageCodes.length;
-    final langCode = languageCodes[currentIndex.value];
+    final newIndex = (currentIndex.value + 1) % languageCodes.length;
+    setLanguageByIndex(newIndex);
+  }
+
+  void setLanguageByIndex(int index) {
+    currentIndex.value = index;
+    final langCode = languageCodes[index];
     final locale = getLocaleFromLangCode(langCode);
-
     Hive.box('settings').put('langCode', langCode);
-    isRtl.value = _isRtl(langCode);
-
+    isRtl.value = isRtlCode(langCode);
     Get.updateLocale(locale);
   }
 
   void _loadLanguage() {
     final langCode = Hive.box('settings').get('langCode', defaultValue: 'en');
     currentIndex.value = languageCodes.indexOf(langCode);
-    isRtl.value = _isRtl(langCode);
+    isRtl.value = isRtlCode(langCode);
   }
 
   static Locale getLocaleFromLangCode(String code) {
     switch (code) {
       case 'fa':
-        return const Locale('fa', 'IR');
+        return Locale('fa', 'IR');
       case 'de':
-        return const Locale('de', 'DE');
+        return Locale('de', 'DE');
       case 'ar':
-        return const Locale('ar', 'SA');
+        return Locale('ar', 'SA');
       case 'en':
       default:
-        return const Locale('en', 'US');
+        return Locale('en', 'US');
     }
   }
 
-  bool _isRtl(String code) {
+  bool isRtlCode(String code) {
     return code == 'fa' || code == 'ar';
   }
 }
