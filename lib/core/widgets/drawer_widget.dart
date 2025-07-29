@@ -38,7 +38,7 @@ Widget drawerWidget(
               changThemeWidget(isDark, onPressed),
               Spacer(),
 
-              flagBottomWidget(languageController),
+              flagDropdownWidget(languageController, isDark),
             ],
           ),
           Center(
