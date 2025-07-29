@@ -10,17 +10,20 @@ import '../controllers/theme_controller.dart';
 class MyBindings implements Bindings {
   @override
   void dependencies() {
+    /*
     Get.put(ThemeController(),);
      Get.put(ProjectController(),);
     Get.put(SplashController(),);
     Get.put(TaskController(),);
      Get.put(DateController(),);
      Get.put(ADrawerController(),);
-        Get.put(LanguageController(),);
-    /*
+        Get.put(LanguageController(),);*/
+    Get.lazyPut(() => TaskController(), fenix: true);
     Get.lazyPut(() => ProjectController(), fenix: true);
+    Get.lazyPut(() => DateController(), fenix: true);
+    Get.lazyPut(() => ADrawerController(), fenix: true);
+    Get.lazyPut(() => LanguageController(), fenix: true);
+    Get.lazyPut(() => ThemeController(), fenix: true);
     Get.lazyPut(() => SplashController(), fenix: true);
-    Get.lazyPut(() => ThemeController(), fenix: true);*/
-    // You can add more controllers or services here as needed
   }
 }

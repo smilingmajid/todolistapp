@@ -14,7 +14,6 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await Hive.initFlutter();
-
   Hive.registerAdapter(ProjectModelAdapter());
   Hive.registerAdapter(TaskModelAdapter());
   await Hive.openBox<ProjectModel>('projectBox');
@@ -34,6 +33,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      initialBinding: MyBindings(),
       translations: AppTranslations(),
       locale: initialLocale,
       fallbackLocale: Locale('en', 'US'),
@@ -51,7 +51,6 @@ class MyApp extends StatelessWidget {
       title: 'todolistapp',
       debugShowCheckedModeBanner: false,
       home: SplashScreen(),
-      initialBinding: MyBindings(),
     );
   }
 }
