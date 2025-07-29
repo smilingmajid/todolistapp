@@ -8,7 +8,7 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: SizedBox(width: 250.0, child: Lottie.asset('assets/task.json')),
+        child: SizedBox(width: 500, child: Lottie.asset('assets/task.json')),
       ),
     );
   }
