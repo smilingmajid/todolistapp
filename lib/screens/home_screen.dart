@@ -56,42 +56,44 @@ class HomeScreen extends StatelessWidget {
             themeController.toggleTheme();
           },
         ),
-        child: Scaffold(
-          backgroundColor:
-              isDark
-                  ? AppColors().darkModeColors[0]
-                  : AppColors().lightModeColors[0],
-          body: Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: Column(
-              children: [
-                headerWidget(
-                  isDark,
-                  onPressed: () {
-                    drawerController.advancedDrawerController.showDrawer();
-                  },
-                ),
-                Expanded(
-                  child: Obx(
-                    () =>
-                        projectController.projectList.isEmpty
-                            ? emptyWidget()
-                            : projectCardWidget(
-                              projectController,
-                              isDark,
-                              isRtl,
-                            ),
+        child: SafeArea(
+          child: Scaffold(
+            backgroundColor:
+                isDark
+                    ? AppColors().darkModeColors[0]
+                    : AppColors().lightModeColors[0],
+            body: Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Column(
+                children: [
+                  headerWidget(
+                    isDark,
+                    onPressed: () {
+                      drawerController.advancedDrawerController.showDrawer();
+                    },
                   ),
-                ),
-              ],
+                  Expanded(
+                    child: Obx(
+                      () =>
+                          projectController.projectList.isEmpty
+                              ? emptyWidget()
+                              : projectCardWidget(
+                                projectController,
+                                isDark,
+                                isRtl,
+                              ),
+                    ),
+                  ),
+                ],
+              ),
             ),
+            floatingActionButton: Obx(() {
+              int index =
+                  projectController.projectList.length %
+                  ProjectColors.palette.length;
+              return newTaskBottomWidget(context, ProjectColors.palette[index]);
+            }),
           ),
-          floatingActionButton: Obx(() {
-            int index =
-                projectController.projectList.length %
-                ProjectColors.palette.length;
-            return newTaskBottomWidget(context, ProjectColors.palette[index]);
-          }),
         ),
       );
     });
