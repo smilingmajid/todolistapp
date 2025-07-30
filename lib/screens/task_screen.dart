@@ -31,177 +31,148 @@ class TaskScreen extends StatelessWidget {
     return Obx(() {
       bool isDark = themeController.isDark.value;
 
-      return Scaffold(
-        backgroundColor:
-            isDark
-                ? AppColors().darkModeColors[0]
-                : AppColors().lightModeColors[0],
-        body: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.centerLeft,
-              end: Alignment.centerRight,
-              colors: [project.color, project.color.withBlue(200)],
+      return SafeArea(
+        child: Scaffold(
+          backgroundColor:
+              isDark
+                  ? AppColors().darkModeColors[0]
+                  : AppColors().lightModeColors[0],
+          body: Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.centerLeft,
+                end: Alignment.centerRight,
+                colors: [project.color, project.color.withBlue(200)],
+              ),
             ),
-          ),
-          child: SafeArea(
-            child: Stack(
-              children: [
-                Positioned(
-                  top: -50,
-                  right: isRtl ? null : -50,
-                  left: isRtl ? -50 : null,
-                  child: glassCircleWidget(200, 200, 0.15, const SizedBox()),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Directionality(
-                    textDirection: TextDirection.ltr,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Stack(
-                          alignment: Alignment.center,
-                          children: [
-                            glassCircleWidget(65, 65, 0.2, const SizedBox()),
-                            glassCircleWidget(
-                              45,
-                              45,
-                              0.4,
-                              IconButton(
-                                icon: const Icon(
-                                  Icons.arrow_back,
-                                  color: Colors.white,
-                                  size: 24,
+            child: SafeArea(
+              child: Stack(
+                children: [
+                  Positioned(
+                    top: -50,
+                    right: isRtl ? null : -50,
+                    left: isRtl ? -50 : null,
+                    child: glassCircleWidget(200, 200, 0.15, const SizedBox()),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: Directionality(
+                      textDirection: TextDirection.ltr,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Stack(
+                            alignment: Alignment.center,
+                            children: [
+                              glassCircleWidget(65, 65, 0.2, const SizedBox()),
+                              glassCircleWidget(
+                                45,
+                                45,
+                                0.4,
+                                IconButton(
+                                  icon: const Icon(
+                                    Icons.arrow_back,
+                                    color: Colors.white,
+                                    size: 24,
+                                  ),
+                                  onPressed: () => Navigator.pop(context),
                                 ),
-                                onPressed: () => Navigator.pop(context),
                               ),
+                            ],
+                          ),
+                          const Spacer(),
+                          textWidget(
+                            isDark: isDark,
+                            txt: project.title,
+                            fontSize: 24,
+                            weight: 'r',
+                          ),
+                          const Spacer(flex: 2),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    top: 120,
+                    left: 20,
+                    right: 20,
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: TextField(
+                            controller: addTaskController,
+                            style: const TextStyle(color: Colors.white),
+                            decoration: InputDecoration(
+                              hintText: 'TaskScreen.AddTask'.tr,
+                              hintStyle: TextStyle(
+                                // ignore: deprecated_member_use
+                                color: Colors.white.withOpacity(0.7),
+                                fontFamily:
+                                    isRtl ? 'IranYekan' : 'ClashDisplay',
+                              ),
+                              border: InputBorder.none,
                             ),
-                          ],
+                          ),
                         ),
-                        const Spacer(),
-                        textWidget(
-                          isDark: isDark,
-                          txt: project.title,
-                          fontSize: 24,
-                          weight: 'r',
+                        selectDateWidget(context, dateController),
+                        IconButton(
+                          icon: const Icon(Icons.add, color: Colors.white),
+                          onPressed: () {
+                            if (addTaskController.text.trim().isEmpty) {
+                              Get.snackbar(
+                                'Error',
+                                'Task title cannot be empty',
+                                backgroundColor: Colors.redAccent,
+                                colorText: Colors.white,
+                              );
+                              return;
+                            }
+                            taskController.addTask(
+                              TaskModel(
+                                title: addTaskController.text.trim(),
+                                deadline: dateController.selectedDate,
+                                projectId: project.id,
+                              ),
+                            );
+                            addTaskController.clear();
+                          },
                         ),
-                        const Spacer(flex: 2),
                       ],
                     ),
                   ),
-                ),
-                Positioned(
-                  top: 120,
-                  left: 20,
-                  right: 20,
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: TextField(
-                          controller: addTaskController,
-                          style: const TextStyle(color: Colors.white),
-                          decoration: InputDecoration(
-                            hintText: 'TaskScreen.AddTask'.tr,
-                            hintStyle: TextStyle(
-                              // ignore: deprecated_member_use
-                              color: Colors.white.withOpacity(0.7),
-                              fontFamily: isRtl ? 'IranYekan' : 'ClashDisplay',
-                            ),
-                            border: InputBorder.none,
-                          ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 200),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color:
+                            isDark
+                                ? AppColors().darkModeColors[0]
+                                : AppColors().lightModeColors[0],
+                        borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(30),
+                          topRight: Radius.circular(30),
                         ),
                       ),
-                      selectDateWidget(context, dateController),
-                      IconButton(
-                        icon: const Icon(Icons.add, color: Colors.white),
-                        onPressed: () {
-                          if (addTaskController.text.trim().isEmpty) {
-                            Get.snackbar(
-                              'Error',
-                              'Task title cannot be empty',
-                              backgroundColor: Colors.redAccent,
-                              colorText: Colors.white,
-                            );
-                            return;
-                          }
-                          taskController.addTask(
-                            TaskModel(
-                              title: addTaskController.text.trim(),
-                              deadline: dateController.selectedDate,
-                              projectId: project.id,
-                            ),
-                          );
-                          addTaskController.clear();
-                        },
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 200),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color:
-                          isDark
-                              ? AppColors().darkModeColors[0]
-                              : AppColors().lightModeColors[0],
-                      borderRadius: const BorderRadius.only(
-                        topLeft: Radius.circular(30),
-                        topRight: Radius.circular(30),
-                      ),
-                    ),
-                    child: Obx(() {
-                      final allTasks = taskController.getTasksByProject(
-                        project.id,
-                      );
-                      final activeTasks =
-                          allTasks.where((task) => !task.isDone).toList();
-                      final completedTasks =
-                          allTasks.where((task) => task.isDone).toList();
+                      child: Obx(() {
+                        final allTasks = taskController.getTasksByProject(
+                          project.id,
+                        );
+                        final activeTasks =
+                            allTasks.where((task) => !task.isDone).toList();
+                        final completedTasks =
+                            allTasks.where((task) => task.isDone).toList();
 
-                      return ListView(
-                        padding: const EdgeInsets.all(20),
-                        children: [
-                          taskStatusWidget(
-                            Colors.orange,
-                            const Color.fromARGB(255, 253, 239, 218),
-                            activeTasks.length,
-                            'TaskScreen.ActiveTask'.tr,
-                          ),
-                          const SizedBox(height: 20),
-                          ...activeTasks.map((task) {
-                            final realIndex = taskController.tasks.indexOf(
-                              task,
-                            );
-                            return buildTaskItemWidget(
-                              task,
-                              taskController,
-                              isDark,
-                              realIndex,
-                            );
-                          }),
-                          if (completedTasks.isNotEmpty) ...[
-                            const SizedBox(height: 30),
-                            Container(
-                              height: 2,
-                              color:
-                                  isDark
-                                      ? AppColors().darkModeColors[1]
-                                      : AppColors().lightModeColors[1],
-                              margin: const EdgeInsets.symmetric(
-                                horizontal: 20,
-                              ),
-                            ),
-                            const SizedBox(height: 30),
+                        return ListView(
+                          padding: const EdgeInsets.all(20),
+                          children: [
                             taskStatusWidget(
-                              Colors.green,
-                              const Color.fromARGB(255, 232, 245, 233),
-                              completedTasks.length,
-                              'TaskScreen.CompletedTasks'.tr,
+                              Colors.orange,
+                              const Color.fromARGB(255, 253, 239, 218),
+                              activeTasks.length,
+                              'TaskScreen.ActiveTask'.tr,
                             ),
                             const SizedBox(height: 20),
-                            ...completedTasks.map((task) {
+                            ...activeTasks.map((task) {
                               final realIndex = taskController.tasks.indexOf(
                                 task,
                               );
@@ -212,13 +183,45 @@ class TaskScreen extends StatelessWidget {
                                 realIndex,
                               );
                             }),
+                            if (completedTasks.isNotEmpty) ...[
+                              const SizedBox(height: 30),
+                              Container(
+                                height: 2,
+                                color:
+                                    isDark
+                                        ? AppColors().darkModeColors[1]
+                                        : AppColors().lightModeColors[1],
+                                margin: const EdgeInsets.symmetric(
+                                  horizontal: 20,
+                                ),
+                              ),
+                              const SizedBox(height: 30),
+                              taskStatusWidget(
+                                Colors.green,
+                                const Color.fromARGB(255, 232, 245, 233),
+                                completedTasks.length,
+                                'TaskScreen.CompletedTasks'.tr,
+                              ),
+                              const SizedBox(height: 20),
+                              ...completedTasks.map((task) {
+                                final realIndex = taskController.tasks.indexOf(
+                                  task,
+                                );
+                                return buildTaskItemWidget(
+                                  task,
+                                  taskController,
+                                  isDark,
+                                  realIndex,
+                                );
+                              }),
+                            ],
                           ],
-                        ],
-                      );
-                    }),
+                        );
+                      }),
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
