@@ -19,7 +19,9 @@ Future<void> main() async {
   await Hive.openBox<ProjectModel>('projectBox');
   await Hive.openBox<TaskModel>('taskBox');
   await Hive.openBox('settings');
+  await Hive.openBox('ShowBox');
   final box = Hive.box('settings');
+
   String? langCode = box.get('langCode', defaultValue: 'en');
   Locale locale = LanguageController.getLocaleFromLangCode(langCode!);
 
