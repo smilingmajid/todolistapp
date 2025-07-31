@@ -1,14 +1,22 @@
 import 'package:get/get.dart';
-
+import 'package:hive/hive.dart';
 import '../screens/home_screen.dart';
+import '../screens/onboarding_screen.dart';
 
 class SplashController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    Future.delayed(const Duration(seconds: 5), () async {
+      final box = await Hive.openBox('ShowBox');
+      final isFirstTime = box.get('isFirstTime', defaultValue: true);
 
-    Future.delayed(const Duration(milliseconds: 5000), () async {
-      Get.off(() => HomeScreen());
-    }).then((_) {});
+      if (isFirstTime) {
+        await box.put('isFirstTime', false);
+        Get.off(() => OnboardingScreen());
+      } else {
+        Get.off(() => HomeScreen());
+      }
+    });
   }
 }
