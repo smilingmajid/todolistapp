@@ -11,12 +11,12 @@ class SplashController extends GetxController {
       final box = await Hive.openBox('ShowBox');
       final isFirstTime = box.get('isFirstTime', defaultValue: true);
 
-      /* if (isFirstTime) {
-        await box.put('isFirstTime', false);*/
-      Get.off(() => OnboardingScreen());
-      /*x } else {
+      if (isFirstTime) {
+        await box.put('isFirstTime', false);
+        Get.off(() => OnboardingScreen());
+      } else {
         Get.off(() => HomeScreen());
-      }*/
+      }
     });
   }
 }
