@@ -37,7 +37,7 @@ class OnboardingScreen extends StatelessWidget {
           title: 'OnboardingScreen.MVCTitle'.tr,
           body: 'OnboardingScreen.MVCBody'.tr,
           image: Center(
-            child: Image.asset('assets/images/mvc.png', height: 175),
+            child: SizedBox(width: 500, child: Lottie.asset('assets/mvc.json')),
           ),
         ),
         PageViewModel(

@@ -110,6 +110,7 @@ flutter:
     - assets/empty.json
     - assets/task.json
     - assets/Getx.json
+    - assets/mvc.json
     - assets/image/
     - assets/fonts/
 
