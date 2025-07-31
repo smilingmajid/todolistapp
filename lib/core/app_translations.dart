@@ -22,20 +22,31 @@ class AppTranslations extends Translations {
         'Name': 'Majid Ghasemy',
         'Job': 'Mid Level flutter Developer',
       },
+      'OnboardingScreen': {
+        'GetXTitle': 'GetX',
+        'GetXBody': 'Used for state management, routing and dependencies.',
+        'HiveTitle': 'Hive',
+        'HiveBody': 'Local data storage powered by Hive.',
+        'MVCTitle': 'Flutter MVC',
+        'MVCBody': 'The app follows a Model-View-Controller architecture.',
+        'StartTitle': 'Get Started',
+        'StartBody': 'Ready to manage your tasks?',
+        'StartButton': 'Start Now',
+        'Skip': 'Skip',
+        'Done': 'Done',
+      },
     }),
 
     'de_DE': flatten({
       'HomeScreen': {
         'AppBar': 'Home Screen',
-        'NoProject':
-            'Noch keine Projekte vorhanden.\nTippe auf +, um ein neues Projekt hinzuzufügen',
+        'NoProject': 'Noch keine Projekte vorhanden.\nTippe auf +, um ein neues Projekt hinzuzufügen',
       },
       'TaskScreen': {
         'AddTask': 'Neue Aufgabe hinzufügen ...',
         'ActiveTask': 'Laufende Aufgaben',
         'CompletedTasks': 'Abgeschlossene Aufgaben',
       },
-
       'DrawerWidget': {
         'GitHub': 'GitHub',
         'Instagram': 'Instagram',
@@ -45,12 +56,25 @@ class AppTranslations extends Translations {
         'Name': 'Majid Ghasemy',
         'Job': 'Mid Level flutter Developer',
       },
+      'OnboardingScreen': {
+        'GetXTitle': 'GetX',
+        'GetXBody': 'Wird für Zustandsverwaltung, Routing und Abhängigkeiten verwendet.',
+        'HiveTitle': 'Hive',
+        'HiveBody': 'Lokale Datenspeicherung mit Hive.',
+        'MVCTitle': 'Flutter MVC',
+        'MVCBody': 'Die App verwendet das MVC-Architekturmuster.',
+        'StartTitle': 'Los geht\'s',
+        'StartBody': 'Bereit, deine Aufgaben zu verwalten?',
+        'StartButton': 'Jetzt starten',
+        'Skip': 'Überspringen',
+        'Done': 'Fertig',
+      },
     }),
+
     'fa_IR': flatten({
       'HomeScreen': {
         'AppBar': 'صفحه اصلی',
-        'NoProject':
-            'هنوز هیچ پروژه‌ای وجود ندارد.\nبرای افزودن پروژه جدید، روی + بزنید.',
+        'NoProject': 'هنوز هیچ پروژه‌ای وجود ندارد.\nبرای افزودن پروژه جدید، روی + بزنید.',
       },
       'TaskScreen': {
         'AddTask': 'افزودن وظیفه جدید ...',
@@ -65,6 +89,19 @@ class AppTranslations extends Translations {
         'YouTube': 'یوتیوب',
         'Name': 'مجید قاسمی',
         'Job': 'توسعه دهنده فلاتر',
+      },
+      'OnboardingScreen': {
+        'GetXTitle': 'GetX',
+        'GetXBody': 'برای مدیریت وضعیت، مسیر‌یابی و وابستگی‌ها استفاده شده.',
+        'HiveTitle': 'Hive',
+        'HiveBody': 'برای ذخیره‌سازی داده‌های محلی از Hive استفاده شده است.',
+        'MVCTitle': 'Flutter MVC',
+        'MVCBody': 'برنامه از معماری MVC (مدل-نما-کنترلر) استفاده می‌کند.',
+        'StartTitle': 'شروع کن',
+        'StartBody': 'آماده‌ای وظایف‌ت رو مدیریت کنی؟',
+        'StartButton': 'شروع',
+        'Skip': 'رد کردن',
+        'Done': 'اتمام',
       },
     }),
 
@@ -86,6 +123,19 @@ class AppTranslations extends Translations {
         'YouTube': 'يوتيوب',
         'Name': 'مجيد قاسمي',
         'Job': 'مطور فلاتر',
+      },
+      'OnboardingScreen': {
+        'GetXTitle': 'GetX',
+        'GetXBody': 'يستخدم لإدارة الحالة والتوجيه والاعتماديات.',
+        'HiveTitle': 'Hive',
+        'HiveBody': 'يتم تخزين البيانات محليًا باستخدام Hive.',
+        'MVCTitle': 'Flutter MVC',
+        'MVCBody': 'تتبع التطبيق نمط نموذج-عرض-تحكم (MVC).',
+        'StartTitle': 'ابدأ',
+        'StartBody': 'هل أنت مستعد لإدارة مهامك؟',
+        'StartButton': 'ابدأ الآن',
+        'Skip': 'تخطي',
+        'Done': 'تم',
       },
     }),
   };
