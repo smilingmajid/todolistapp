@@ -111,6 +111,8 @@ flutter:
     - assets/task.json
     - assets/Getx.json
     - assets/mvc.json
+    - assets/Hive.json    
+    - assets/lets.json
     - assets/image/
     - assets/fonts/
 

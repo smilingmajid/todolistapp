@@ -43,7 +43,7 @@ class OnboardingScreen extends StatelessWidget {
         PageViewModel(
           title: 'OnboardingScreen.StartTitle'.tr,
           body: 'OnboardingScreen.StartBody'.tr,
-          image: const Center(child: Icon(Icons.task_alt, size: 150)),
+          image: SizedBox(width: 500, child: Lottie.asset('assets/task.json')),
           footer: ElevatedButton(
             onPressed: controller.completeOnboarding,
             child: Text('OnboardingScreen.StartButton'.tr),
