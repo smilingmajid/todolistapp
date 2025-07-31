@@ -7,6 +7,7 @@ Widget textWidget({
   String weight = "r",
   double fontSize = 24,
   FontWeight fontWeight = FontWeight.normal,
+  
   Color? color,
 }) {
   final isFarsiOrArabic = RegExp(r'[\u0600-\u06FF]').hasMatch(txt);
