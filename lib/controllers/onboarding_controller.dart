@@ -7,7 +7,7 @@ class OnboardingController extends GetxController {
   final String keyName = 'onboarding_shown';
 
   Future<void> completeOnboarding() async {
-    final box = await Hive.openBox('settings');
+    final box = await Hive.openBox('ShowBox');
     await box.put(keyName, true);
     Get.offAll(() => const HomeScreen());
   }
