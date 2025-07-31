@@ -27,7 +27,10 @@ class OnboardingScreen extends StatelessWidget {
           title: 'OnboardingScreen.HiveTitle'.tr,
           body: 'OnboardingScreen.HiveBody'.tr,
           image: Center(
-            child: Image.asset('assets/images/hive.png', height: 175),
+            child: SizedBox(
+              width: 500,
+              child: Lottie.asset('assets/Hive.json'),
+            ),
           ),
         ),
         PageViewModel(
