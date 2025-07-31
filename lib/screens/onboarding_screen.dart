@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:introduction_screen/introduction_screen.dart';
+import 'package:lottie/lottie.dart';
 import '../controllers/onboarding_controller.dart';
 
 class OnboardingScreen extends StatelessWidget {
@@ -15,17 +16,26 @@ class OnboardingScreen extends StatelessWidget {
         PageViewModel(
           title: 'OnboardingScreen.GetXTitle'.tr,
           body: 'OnboardingScreen.GetXBody'.tr,
-          image: Center(child: Image.asset('assets/images/getx.png', height: 175)),
+          image: Center(
+            child: SizedBox(
+              width: 500,
+              child: Lottie.asset('assets/Getx.json'),
+            ),
+          ),
         ),
         PageViewModel(
           title: 'OnboardingScreen.HiveTitle'.tr,
           body: 'OnboardingScreen.HiveBody'.tr,
-          image: Center(child: Image.asset('assets/images/hive.png', height: 175)),
+          image: Center(
+            child: Image.asset('assets/images/hive.png', height: 175),
+          ),
         ),
         PageViewModel(
           title: 'OnboardingScreen.MVCTitle'.tr,
           body: 'OnboardingScreen.MVCBody'.tr,
-          image: Center(child: Image.asset('assets/images/mvc.png', height: 175)),
+          image: Center(
+            child: Image.asset('assets/images/mvc.png', height: 175),
+          ),
         ),
         PageViewModel(
           title: 'OnboardingScreen.StartTitle'.tr,
@@ -42,10 +52,11 @@ class OnboardingScreen extends StatelessWidget {
       showSkipButton: true,
       skip: Text('OnboardingScreen.Skip'.tr),
       next: const Icon(Icons.arrow_forward),
-      done: Text('OnboardingScreen.Done'.tr, style: const TextStyle(fontWeight: FontWeight.w600)),
+      done: Text(
+        'OnboardingScreen.Done'.tr,
+        style: const TextStyle(fontWeight: FontWeight.w600),
+      ),
       dotsDecorator: const DotsDecorator(activeColor: Colors.black),
     );
   }
 }
-
-

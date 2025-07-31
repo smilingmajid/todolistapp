@@ -109,6 +109,7 @@ flutter:
   assets:
     - assets/empty.json
     - assets/task.json
+    - assets/Getx.json
     - assets/image/
     - assets/fonts/
 
