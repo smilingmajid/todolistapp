@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:introduction_screen/introduction_screen.dart';
+import '../controllers/onboarding_controller.dart';
 
 class OnboardingScreen extends StatelessWidget {
   OnboardingScreen({super.key});
 
-  final controller = Get.put(OnboardingController());
+  final controller = Get.find<OnboardingController>();
 
   @override
   Widget build(BuildContext context) {
@@ -48,10 +49,3 @@ class OnboardingScreen extends StatelessWidget {
 }
 
 
-
-
-
-
-
-
-Ask ChatGPT
