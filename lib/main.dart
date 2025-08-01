@@ -34,25 +34,27 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      initialBinding: MyBindings(),
-      translations: AppTranslations(),
-      locale: initialLocale,
-      fallbackLocale: Locale('en', 'US'),
-      supportedLocales: const [
-        Locale('en', 'US'),
-        Locale('de', 'DE'),
-        Locale('fa', 'IR'),
-        Locale('ar', 'SA'),
-      ],
-      localizationsDelegates: const [
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      title: 'todolistapp',
-      debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
+    return SafeArea(
+      child: GetMaterialApp(
+        initialBinding: MyBindings(),
+        translations: AppTranslations(),
+        locale: initialLocale,
+        fallbackLocale: Locale('en', 'US'),
+        supportedLocales: const [
+          Locale('en', 'US'),
+          Locale('de', 'DE'),
+          Locale('fa', 'IR'),
+          Locale('ar', 'SA'),
+        ],
+        localizationsDelegates: const [
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        title: 'todolistapp',
+        debugShowCheckedModeBanner: false,
+        home: SplashScreen(),
+      ),
     );
   }
 }
