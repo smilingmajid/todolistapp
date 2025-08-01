@@ -35,6 +35,11 @@ class AppTranslations extends Translations {
         'Skip': 'Skip',
         'Done': 'Done',
       },
+      'Project': {
+        'addProject': 'Add New Project',
+        'add': 'Add',
+        'cancel': 'Cancel',
+      },
     }),
 
     'de_DE': flatten({
@@ -68,6 +73,11 @@ class AppTranslations extends Translations {
         'StartButton': 'Jetzt starten',
         'Skip': 'Überspringen',
         'Done': 'Fertig',
+      },
+      'Project': {
+        'addProject': 'Neues Projekt hinzufügen',
+        'add': 'Hinzufügen',
+        'cancel': 'Abbrechen',
       },
     }),
 
@@ -103,6 +113,11 @@ class AppTranslations extends Translations {
         'Skip': 'رد کردن',
         'Done': 'اتمام',
       },
+      'Project': {
+        'addProject': 'افزودن پروژه جدید',
+        'add': 'افزودن',
+        'cancel': 'لغو',
+      },
     }),
 
     'ar_SA': flatten({
@@ -136,6 +151,11 @@ class AppTranslations extends Translations {
         'StartButton': 'ابدأ الآن',
         'Skip': 'تخطي',
         'Done': 'تم',
+      },
+      'Project': {
+        'addProject': 'إضافة مشروع جديد',
+        'add': 'إضافة',
+        'cancel': 'إلغاء',
       },
     }),
   };
