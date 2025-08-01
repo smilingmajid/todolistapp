@@ -8,10 +8,9 @@ import 'package:todolistapp/core/widgets/show_add_project_dialog.dart';
 
 import '../../controllers/project_controller.dart';
 
-
 Widget newTaskBottomWidget(BuildContext context, Color projectnColor) {
   bool isDark = Get.find<ThemeController>().isDark.value;
-  final ProjectController projectController=Get.find<ProjectController>();
+  final ProjectController projectController = Get.find<ProjectController>();
   return Container(
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(15),
@@ -48,11 +47,10 @@ Widget newTaskBottomWidget(BuildContext context, Color projectnColor) {
                 context,
                 projectController,
                 '',
-                'Add project',
+                'Project.addProject'.tr,
                 isDark,
                 projectnColor,
               );
-         
             },
           ),
         ),

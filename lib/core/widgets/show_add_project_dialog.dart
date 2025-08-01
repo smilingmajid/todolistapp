@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import '../../controllers/project_controller.dart';
 import 'text_widget.dart';
@@ -85,13 +86,13 @@ Future showAddProjectDialogWidget(
                           onPressed: () => Navigator.pop(context),
                           child: textWidget(
                             isDark: true,
-                            txt: "Cancel",
+                            txt: 'Project.cancel'.tr,
                             fontSize: 14,
                           ),
                         ),
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.blue,
+                            backgroundColor: Colors.black,
                             padding: EdgeInsets.zero,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(12),
@@ -107,7 +108,7 @@ Future showAddProjectDialogWidget(
                           },
                           child: textWidget(
                             isDark: true,
-                            txt: "Add",
+                            txt: 'Project.add'.tr,
                             fontSize: 14,
                             weight: "b",
                           ),
