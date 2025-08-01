@@ -1,10 +1,17 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-import '../../screens/add_new_task_screen.dart';
+import 'package:todolistapp/controllers/theme_controller.dart';
+import 'package:todolistapp/core/widgets/show_add_project_dialog.dart';
+
+import '../../controllers/project_controller.dart';
+
 
 Widget newTaskBottomWidget(BuildContext context, Color projectnColor) {
+  bool isDark = Get.find<ThemeController>().isDark.value;
+  final ProjectController projectController=Get.find<ProjectController>();
   return Container(
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(15),
@@ -37,15 +44,15 @@ Widget newTaskBottomWidget(BuildContext context, Color projectnColor) {
           child: IconButton(
             icon: const Icon(Icons.add, color: Colors.white),
             onPressed: () async {
-             // print(projectnColor);
-              await Navigator.push(
+              showAddProjectDialogWidget(
                 context,
-                MaterialPageRoute(
-                  builder:
-                      (context) =>
-                          AddNewProjectScreen(projectColor: projectnColor),
-                ),
+                projectController,
+                '',
+                'Add project',
+                isDark,
+                projectnColor,
               );
+         
             },
           ),
         ),

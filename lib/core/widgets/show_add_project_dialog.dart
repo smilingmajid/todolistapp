@@ -4,7 +4,7 @@ import 'package:iconsax/iconsax.dart';
 import '../../controllers/project_controller.dart';
 import 'text_widget.dart';
 
-Future showAddProjectDialog(
+Future showAddProjectDialogWidget(
   BuildContext context,
   ProjectController projectController,
   String subtitle,
